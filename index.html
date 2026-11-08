@@ -35,11 +35,6 @@
             background-color: var(--body-bg);
             font-family: 'Cairo', sans-serif;
             color: var(--ink);
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 414px));
-            justify-content: center;
-            align-items: start;
-            gap: 28px;
             padding: 40px 24px;
         }
 
@@ -192,6 +187,98 @@
             align-items: center;
             text-align: center;
             padding: 45px 30px;
+        }
+
+        /* Link-in-bio style landing page */
+        .landing-slide {
+            align-items: stretch;
+            margin: 0 auto;
+        }
+
+        #menu-board {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 414px));
+            justify-content: center;
+            align-items: start;
+            gap: 28px;
+        }
+
+        #menu-board.is-open {
+            display: grid;
+        }
+
+        .landing-ring {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .landing-ring.ring-tl {
+            top: -90px;
+            left: -90px;
+        }
+
+        .landing-ring.ring-br {
+            bottom: -110px;
+            right: -110px;
+        }
+
+        .landing-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 45px 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .landing-content .main-brand-logo {
+            font-size: 44px;
+            margin-top: 18px;
+        }
+
+        .menu-pill-btn {
+            display: inline-block;
+            margin-top: 34px;
+            padding: 11px 42px;
+            background: var(--navy);
+            color: #FFFFFF;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 999px;
+            box-shadow: 0 8px 20px rgba(26, 25, 67, 0.25);
+        }
+
+        .landing-icon-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .icon-btn {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1.5px solid var(--navy);
+            border-radius: 10px;
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        .icon-btn svg {
+            width: 18px;
+            height: 18px;
         }
 
         .main-brand-logo {
@@ -396,6 +483,14 @@
                 padding: 0;
             }
 
+            #landing-slide {
+                display: block !important;
+            }
+
+            #menu-board {
+                display: block !important;
+            }
+
             .story-slide {
                 width: 100%;
                 min-height: 0;
@@ -415,6 +510,68 @@
 </head>
 
 <body>
+
+    <!-- Landing / Link-in-bio -->
+    <div class="story-slide landing-slide" id="landing-slide">
+        <svg class="landing-ring ring-tl" width="260" height="260" viewBox="0 0 260 260" fill="none">
+            <circle cx="130" cy="130" r="128" stroke="var(--band-tint)" stroke-width="20" />
+            <circle cx="150" cy="150" r="90" stroke="var(--band-tint)" stroke-width="12" />
+        </svg>
+        <svg class="landing-ring ring-br" width="300" height="300" viewBox="0 0 300 300" fill="none">
+            <circle cx="150" cy="150" r="148" stroke="var(--band-tint)" stroke-width="22" />
+        </svg>
+        <div class="landing-content">
+            <img src="almood-logo.jpg" alt="Almood Shop Logo"
+                style="width:110px;height:110px;border-radius:50%;object-fit:cover;border:2px solid var(--navy);" />
+            <div class="main-brand-logo">ALMOOD</div>
+            <div class="shop-subtitle">SHOP</div>
+
+            <button type="button" class="menu-pill-btn" id="open-menu-btn">Menu</button>
+
+            <div class="landing-icon-row">
+                <a class="icon-btn" href="https://maps.app.goo.gl/VWhmwJ3KZZtvfNXF7" target="_blank" rel="noopener"
+                    title="Location">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                </a>
+                <a class="icon-btn" href="tel:+201271807777" title="Call">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-.54a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                    </svg>
+                </a>
+                <a class="icon-btn" href="https://www.facebook.com/share/18g8bhJyKP/?mibextid=wwXIfr" target="_blank"
+                    rel="noopener" title="Facebook">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M15 3h-2.5A4.5 4.5 0 008 7.5V10H5.5v4H8v7h4v-7h2.5l1-4H12V7.8a1 1 0 011-1H15V3z" />
+                    </svg>
+                </a>
+                <a class="icon-btn" href="https://www.instagram.com/almoodshop.egy/" target="_blank" rel="noopener"
+                    title="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <circle cx="12" cy="12" r="4" />
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                    </svg>
+                </a>
+                <a class="icon-btn" href="https://www.tiktok.com/@almoodshop.eg" target="_blank" rel="noopener"
+                    title="TikTok">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M16.5 3c.4 2.1 2.1 3.7 4.2 4v3c-1.6 0-3.1-.5-4.2-1.4v6.6a5.8 5.8 0 11-5.8-5.8c.3 0 .6 0 .9.1v3.1a2.7 2.7 0 103.8 2.5V3h1.1z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="menu-board">
 
     <!-- Cover -->
     <div class="story-slide">
@@ -1297,17 +1454,25 @@
         </div>
     </div>
 
+    </div>
+
     <script>
+        document.getElementById('open-menu-btn').addEventListener('click', () => {
+            document.getElementById('landing-slide').style.display = 'none';
+            document.getElementById('menu-board').classList.add('is-open');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
         const allSlides = document.querySelectorAll('.story-slide');
-        const numberedSlides = Array.from(allSlides).filter((slide, index) => index !== 0 && slide.id !== 'index');
+        const numberedSlides = Array.from(allSlides).filter((slide) => slide.id && slide.id !== 'index');
         const totalPages = numberedSlides.length;
 
         let pageCounter = 0;
         const pageNumberById = {};
 
-        allSlides.forEach((slide, index) => {
-            // Cover and index pages carry no page number
-            if (index === 0 || slide.id === 'index') return;
+        allSlides.forEach((slide) => {
+            // Landing, cover, and index pages carry no page number
+            if (!slide.id || slide.id === 'index') return;
 
             pageCounter++;
             if (slide.id) pageNumberById[slide.id] = pageCounter;
