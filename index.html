@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N°7 Professional Digital Menu</title>
+    <title>Almood Shop Digital Menu</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Montserrat:wght@400;600;700&family=Great+Vibes&display=swap"
         rel="stylesheet">
 
     <style>
         :root {
-            --brand-teal: #104547;
+            --navy-deep: #0F0E2E;
             --text-white: #FFFFFF;
-            --copper-gold: #DFBA73;
-            --muted-teal: #7A9E9F;
+            --accent-silver: #C9C9E2;
+            --muted-slate: #9191B5;
         }
 
         * {
@@ -24,7 +24,7 @@
         }
 
         body {
-            background-color: #121212;
+            background-color: #0B0A1E;
             font-family: 'Cairo', sans-serif;
             display: flex;
             flex-direction: column;
@@ -35,7 +35,7 @@
         .story-slide {
             width: 414px;
             min-height: 736px;
-            background: #016872;
+            background: #1A1943;
             color: var(--text-white);
             position: relative;
             overflow: visible;
@@ -56,7 +56,7 @@
             transform: translate(-50%, -50%);
             width: 350px;
             height: 350px;
-            background: radial-gradient(circle, rgba(223, 186, 115, 0.05) 0%, transparent 75%);
+            background: radial-gradient(circle, rgba(201, 201, 226, 0.05) 0%, transparent 75%);
             pointer-events: none;
             z-index: 0;
         }
@@ -66,17 +66,17 @@
             content: none;
         }
 
-        /* Faint N°7 watermark on every slide */
+        /* Faint ALMOOD watermark on every slide */
         .story-slide::after {
-            content: 'N°7';
+            content: 'ALMOOD';
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(-25deg);
             font-family: 'Montserrat', sans-serif;
-            font-size: 130px;
+            font-size: 70px;
             font-weight: 700;
-            letter-spacing: -4px;
+            letter-spacing: -2px;
             color: rgba(255, 255, 255, 0.03);
             pointer-events: none;
             z-index: 0;
@@ -99,7 +99,7 @@
         .slide-header .en-sub {
             font-family: 'Great Vibes', cursive;
             font-size: 26px;
-            color: var(--copper-gold);
+            color: var(--accent-silver);
             display: block;
             margin-top: -4px;
         }
@@ -120,7 +120,7 @@
             display: block;
             width: 40px;
             height: 1px;
-            background: linear-gradient(to right, transparent, var(--copper-gold), transparent);
+            background: linear-gradient(to right, transparent, var(--accent-silver), transparent);
             margin: 10px auto 0;
         }
 
@@ -151,7 +151,7 @@
             left: 0;
             right: 0;
             height: 55%;
-            background: linear-gradient(to top, rgba(1, 104, 114, 0.75) 0%, transparent 100%);
+            background: linear-gradient(to top, rgba(26, 25, 67, 0.75) 0%, transparent 100%);
             pointer-events: none;
         }
 
@@ -164,13 +164,13 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: #092829;
+            background: var(--navy-deep);
             padding: 20px;
         }
 
         .image-placeholder p {
             font-size: 14px;
-            color: var(--copper-gold);
+            color: var(--accent-silver);
             font-weight: 600;
             margin-top: 5px;
         }
@@ -182,7 +182,7 @@
             gap: 25px;
             font-family: 'Montserrat', sans-serif;
             font-size: 13px;
-            color: var(--copper-gold);
+            color: var(--accent-silver);
             margin-bottom: 10px;
             font-weight: 700;
             z-index: 5;
@@ -212,7 +212,7 @@
 
         /* Gold right-border accent on badge/featured rows */
         .menu-item-row:has(.item-identity) {
-            border-right: 2px solid rgba(223, 186, 115, 0.45);
+            border-right: 2px solid rgba(201, 201, 226, 0.45);
             padding-right: 8px;
         }
 
@@ -228,8 +228,8 @@
         }
 
         .premium-badge {
-            background-color: rgba(223, 186, 115, 0.15);
-            color: var(--copper-gold);
+            background-color: rgba(201, 201, 226, 0.15);
+            color: var(--accent-silver);
             font-size: 10px;
             padding: 1px 7px;
             border-radius: 4px;
@@ -252,7 +252,7 @@
         }
 
         .price-l-value {
-            color: var(--copper-gold);
+            color: var(--accent-silver);
             min-width: 28px;
             text-align: center;
             white-space: nowrap;
@@ -271,7 +271,7 @@
             height: 38px;
             border-radius: 50%;
             object-fit: cover;
-            border: 1.5px solid var(--copper-gold);
+            border: 1.5px solid var(--accent-silver);
             display: block;
         }
 
@@ -299,20 +299,20 @@
             font-size: 34px;
             position: relative;
             top: -18px;
-            color: var(--copper-gold);
+            color: var(--accent-silver);
         }
 
         .script-menu-title {
             font-family: 'Great Vibes', cursive;
             font-size: 52px;
-            color: var(--copper-gold);
+            color: var(--accent-silver);
             margin-top: -10px;
         }
 
         /* Universal Accent Box */
         .premium-footer-box {
             margin-top: auto;
-            border: 1px solid rgba(223, 186, 115, 0.25);
+            border: 1px solid rgba(201, 201, 226, 0.25);
             border-radius: 10px;
             padding: 11px;
             text-align: center;
@@ -323,21 +323,21 @@
 
         .premium-footer-box h4 {
             font-size: 13px;
-            color: var(--copper-gold);
+            color: var(--accent-silver);
             margin-bottom: 3px;
             font-weight: 700;
         }
 
         .premium-footer-box p {
             font-size: 12px;
-            color: var(--muted-teal);
+            color: var(--muted-slate);
         }
 
         /* Halal / allergen note */
         .halal-note {
             margin-top: 14px;
             padding: 8px 12px;
-            border: 1px solid rgba(223, 186, 115, 0.15);
+            border: 1px solid rgba(201, 201, 226, 0.15);
             border-radius: 8px;
             text-align: center;
             direction: rtl;
@@ -347,7 +347,7 @@
         }
 
         .halal-note strong {
-            color: var(--copper-gold);
+            color: var(--accent-silver);
             font-weight: 700;
         }
 
@@ -387,7 +387,7 @@
         .qr-frame-box {
             width: 155px;
             height: 155px;
-            border: 2px solid var(--copper-gold);
+            border: 2px solid var(--accent-silver);
             background: #FFFFFF;
             padding: 12px;
             border-radius: 14px;
@@ -416,7 +416,7 @@
         }
 
         .phone-tag a:hover {
-            color: var(--copper-gold);
+            color: var(--accent-silver);
         }
 
         html {
@@ -448,7 +448,7 @@
         }
 
         .index-item:hover {
-            background: rgba(223, 186, 115, 0.08);
+            background: rgba(201, 201, 226, 0.08);
         }
 
         .index-item-text {
@@ -464,7 +464,7 @@
         .index-item-en {
             font-family: 'Montserrat', sans-serif;
             font-size: 11px;
-            color: var(--muted-teal);
+            color: var(--muted-slate);
             margin-top: 2px;
         }
 
@@ -472,7 +472,7 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 15px;
             font-weight: 700;
-            color: var(--copper-gold);
+            color: var(--accent-silver);
             min-width: 24px;
             text-align: center;
             flex-shrink: 0;
@@ -522,8 +522,9 @@
     <!-- Cover -->
     <div class="story-slide">
         <div class="cover-wrapper">
-            <img src="Instagram Image 1080x1080.jpg" alt="N°7 Logo" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid var(--copper-gold);margin-bottom:18px;" />
-            <div class="main-brand-logo">N<span>°</span>7</div>
+            <img src="almood-logo.jpg" alt="Almood Shop Logo" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid var(--accent-silver);margin-bottom:18px;" />
+            <div class="main-brand-logo" style="font-size: 58px; letter-spacing: -1px;">ALMOOD</div>
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 5px; color: var(--accent-silver); margin-top: -6px;">SHOP</div>
             <div class="script-menu-title">Menu</div>
             <div
                 style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 1000; letter-spacing: 2.5px; color: #FFFF; margin-top: 80px; text-transform: uppercase; opacity: 0.85;">
@@ -577,7 +578,7 @@
             </a>
             <a class="index-item" href="#extras">
                 <span class="index-item-text">
-                    <span class="index-item-ar">إضافات N°7</span>
+                    <span class="index-item-ar">إضافات المود شوب</span>
                     <span class="index-item-en">Customize Your Order</span>
                 </span>
             </a>
@@ -960,7 +961,7 @@
                 </div>
             </div>
             <div class="menu-item-row">
-                <div class="item-identity"><span class="item-title">كوكتيل N°7 الخاص</span><span
+                <div class="item-identity"><span class="item-title">كوكتيل المود شوب الخاص</span><span
                         class="premium-badge">Signature</span></div>
                 <div class="price-matrix"><span class="price-m-value">85</span><span class="price-l-value">100</span>
                 </div>
@@ -998,10 +999,10 @@
         </div>
     </div>
 
-    <!-- N°7 Extras -->
+    <!-- Almood Shop Extras -->
     <div class="story-slide" id="extras">
         <div class="slide-header">
-            <h2>إضافات N°7</h2>
+            <h2>إضافات المود شوب</h2>
             <span class="en-sub">Customize Your Order</span>
             <span class="ar-tagline">خلّي تجربتك فريدة من نوعها</span>
         </div>
@@ -1185,10 +1186,10 @@
                         class="premium-badge">Must Try</span></div>
                 <div class="price-matrix"><span class="price-l-value">95</span></div>
             </div>
-            <div class="menu-item-row" style="border-right: 2px solid var(--copper-gold); padding-right: 8px;">
+            <div class="menu-item-row" style="border-right: 2px solid var(--accent-silver); padding-right: 8px;">
                 <div class="item-identity">
-                    <span class="item-title" style="color: var(--copper-gold); font-weight: 700;">مكس ميني سينابون</span>
-                    <span class="premium-badge" style="background-color: rgba(223,186,115,0.3);">Gold</span>
+                    <span class="item-title" style="color: var(--accent-silver); font-weight: 700;">مكس ميني سينابون</span>
+                    <span class="premium-badge" style="background-color: rgba(201,201,226,0.3);">Gold</span>
                 </div>
                 <div class="price-matrix"><span class="price-l-value" style="font-size: 17px;">220</span></div>
             </div>
@@ -1248,19 +1249,19 @@
 
     <script>
         const instaHTML = `
-      <a href="https://www.instagram.com/n7.egy" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:6px;color:inherit;text-decoration:none;">
+      <a href="https://www.instagram.com/almoodshop.egy/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:6px;color:inherit;text-decoration:none;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
           <circle cx="12" cy="12" r="4"/>
           <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
         </svg>
-        @n7.egy
+        @almoodshop.egy
       </a>
     `;
         const phoneHTML = `
-      <a href="tel:+201080553038" style="display:flex;align-items:center;gap:5px;color:inherit;text-decoration:none;">
+      <a href="tel:+201271807777" style="display:flex;align-items:center;gap:5px;color:inherit;text-decoration:none;">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-.54a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        +20 108 055 3038
+        +20 127 180 7777
       </a>
     `;
 
@@ -1286,7 +1287,7 @@
 
             const logo = document.createElement('div');
             logo.className = 'slide-logo';
-            logo.innerHTML = `<img src="Instagram Image 1080x1080.jpg" alt="N°7" />`;
+            logo.innerHTML = `<img src="almood-logo.jpg" alt="Almood Shop" />`;
             slide.appendChild(logo);
 
             // Index page itself has no page number
