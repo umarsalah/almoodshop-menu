@@ -6,15 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Almood Shop Digital Menu</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Montserrat:wght@400;600;700&family=Great+Vibes&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Montserrat:wght@400;600;700;800&family=Great+Vibes&display=swap"
         rel="stylesheet">
 
     <style>
         :root {
-            --navy-deep: #0F0E2E;
-            --text-white: #FFFFFF;
-            --accent-silver: #C9C9E2;
-            --muted-slate: #9191B5;
+            --navy: #1A1943;
+            --ink: #23222E;
+            --muted: #6E6D8A;
+            --band-tint: #E7E6F5;
+            --badge-bg: rgba(26, 25, 67, 0.10);
+            --rule: #E3E2EF;
+            --page-bg: #FFFFFF;
+            --body-bg: #F1F1F6;
         }
 
         * {
@@ -23,9 +27,14 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #0B0A1E;
+            background-color: var(--body-bg);
             font-family: 'Cairo', sans-serif;
+            color: var(--ink);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -35,247 +44,143 @@
         .story-slide {
             width: 414px;
             min-height: 736px;
-            background: #1A1943;
-            color: var(--text-white);
+            background: var(--page-bg);
+            color: var(--ink);
             position: relative;
-            overflow: visible;
-            padding: 45px 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-            border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Radial highlight */
-        .story-slide::before {
-            content: '';
-            position: absolute;
-            top: 25%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(201, 201, 226, 0.05) 0%, transparent 75%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Remove watermark from cover slide */
-        .story-slide:first-child::after {
-            content: none;
-        }
-
-        /* Faint ALMOOD watermark on every slide */
-        .story-slide::after {
-            content: 'ALMOOD';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-25deg);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 70px;
-            font-weight: 700;
-            letter-spacing: -2px;
-            color: rgba(255, 255, 255, 0.03);
-            pointer-events: none;
-            z-index: 0;
-            white-space: nowrap;
-        }
-
-        /* Slide Headers */
-        .slide-header {
-            text-align: center;
-            margin-bottom: 16px;
-            z-index: 5;
-        }
-
-        .slide-header h2 {
-            font-size: 25px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .slide-header .en-sub {
-            font-family: 'Great Vibes', cursive;
-            font-size: 26px;
-            color: var(--accent-silver);
-            display: block;
-            margin-top: -4px;
-        }
-
-        /* Arabic tagline under header */
-        .ar-tagline {
-            display: block;
-            font-size: 11px;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.45);
-            margin-top: 5px;
-            letter-spacing: 0.3px;
-        }
-
-        /* Gold divider line under slide header */
-        .slide-header::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--accent-silver), transparent);
-            margin: 10px auto 0;
-        }
-
-        /* Product Image Containers */
-        .product-image-frame {
-            width: 100%;
-            height: 210px;
-            border-radius: 14px;
             overflow: hidden;
-            margin-bottom: 22px;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
-            position: relative;
-            z-index: 5;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .product-image-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Dark gradient overlay at bottom of images */
-        .product-image-frame::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 55%;
-            background: linear-gradient(to top, rgba(26, 25, 67, 0.75) 0%, transparent 100%);
-            pointer-events: none;
-        }
-
-        /* Placeholder block styling when viewing offline */
-        .image-placeholder {
-            width: 100%;
-            height: 100%;
+            margin-bottom: 28px;
+            border: 1px solid var(--rule);
+            box-shadow: 0 4px 18px rgba(26, 25, 67, 0.08);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: var(--navy-deep);
-            padding: 20px;
+            scroll-margin-top: 20px;
         }
 
-        .image-placeholder p {
-            font-size: 14px;
-            color: var(--accent-silver);
-            font-weight: 600;
-            margin-top: 5px;
-        }
-
-        /* Dual Size Header Labels */
-        .dual-labels {
+        /* Bilingual color-block section header band */
+        .page-header-band {
+            background: var(--band-tint);
+            padding: 22px 24px;
             display: flex;
-            justify-content: flex-start;
-            gap: 25px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 13px;
-            color: var(--accent-silver);
-            margin-bottom: 10px;
-            font-weight: 700;
-            z-index: 5;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 10px;
         }
 
-        .dual-labels span {
-            min-width: 28px;
+        .band-en {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+
+        .band-ar {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            color: var(--ink);
+        }
+
+        .page-body {
+            padding: 22px 24px 18px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        /* Column header labels above price values */
+        .col-labels {
+            display: grid;
+            grid-template-columns: 1fr 108px 1fr;
+            margin-bottom: 8px;
+        }
+
+        .col-labels-price {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--muted);
+            direction: ltr;
+        }
+
+        .col-labels-price span {
+            min-width: 24px;
             text-align: center;
         }
 
-        /* Menu Content Listing Layout */
+        /* Menu listing */
         .menu-list-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 11px;
-            z-index: 5;
         }
 
         .menu-item-row {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr 108px 1fr;
             align-items: center;
-            direction: rtl;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            padding-bottom: 9px;
+            column-gap: 8px;
+            padding: 9px 6px;
         }
 
-        /* Gold right-border accent on badge/featured rows */
-        .menu-item-row:has(.item-identity) {
-            border-right: 2px solid rgba(201, 201, 226, 0.45);
-            padding-right: 8px;
+        .menu-item-row:nth-child(even) {
+            background: var(--band-tint);
+        }
+
+        .item-name-en {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--muted);
+            text-align: left;
+            line-height: 1.25;
         }
 
         .item-identity {
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: flex-end;
+            gap: 6px;
         }
 
-        .item-title {
+        .item-name-ar {
             font-size: 15px;
-            font-weight: 400;
+            font-weight: 700;
+            text-align: right;
+            line-height: 1.25;
         }
 
         .premium-badge {
-            background-color: rgba(201, 201, 226, 0.15);
-            color: var(--accent-silver);
-            font-size: 10px;
-            padding: 1px 7px;
+            background-color: var(--badge-bg);
+            color: var(--navy);
+            font-size: 9px;
+            padding: 2px 7px;
             border-radius: 4px;
             font-weight: 700;
+            white-space: nowrap;
         }
 
         .price-matrix {
             font-family: 'Montserrat', sans-serif;
             display: flex;
-            gap: 25px;
-            font-size: 16px;
-            font-weight: 700;
+            justify-content: center;
+            gap: 20px;
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--ink);
+            direction: ltr;
         }
 
-        .price-m-value {
-            color: var(--text-white);
-            min-width: 28px;
+        .price-matrix span {
+            min-width: 24px;
             text-align: center;
             white-space: nowrap;
         }
 
-        .price-l-value {
-            color: var(--accent-silver);
-            min-width: 28px;
-            text-align: center;
-            white-space: nowrap;
-        }
-
-        /* Per-slide logo badge */
-        .slide-logo {
-            position: absolute;
-            top: 14px;
-            left: 16px;
-            z-index: 10;
-        }
-
-        .slide-logo img {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1.5px solid var(--accent-silver);
-            display: block;
-        }
-
-        /* Cover Architecture */
+        /* Cover */
         .cover-wrapper {
             flex: 1;
             display: flex;
@@ -283,156 +188,87 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 45px 30px;
         }
 
         .main-brand-logo {
             font-family: 'Montserrat', sans-serif;
-            font-size: 85px;
-            font-weight: 700;
-            letter-spacing: -2px;
-            position: relative;
-            color: var(--text-white);
+            font-size: 58px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--navy);
             line-height: 1;
         }
 
-        .main-brand-logo span {
-            font-size: 34px;
-            position: relative;
-            top: -18px;
-            color: var(--accent-silver);
+        .shop-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: var(--muted);
+            margin-top: -6px;
         }
 
         .script-menu-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 52px;
-            color: var(--accent-silver);
-            margin-top: -10px;
+            font-size: 50px;
+            color: var(--navy);
+            margin-top: -6px;
         }
 
-        /* Universal Accent Box */
+        .cover-tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            color: var(--muted);
+            margin-top: 70px;
+            text-transform: uppercase;
+        }
+
+        /* Upsell / note boxes */
         .premium-footer-box {
             margin-top: auto;
-            border: 1px solid rgba(201, 201, 226, 0.25);
-            border-radius: 10px;
-            padding: 11px;
+            border: 1px solid var(--rule);
+            background: var(--band-tint);
+            border-radius: 8px;
+            padding: 12px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.01);
-            z-index: 5;
             direction: rtl;
         }
 
         .premium-footer-box h4 {
             font-size: 13px;
-            color: var(--accent-silver);
+            color: var(--navy);
             margin-bottom: 3px;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .premium-footer-box p {
             font-size: 12px;
-            color: var(--muted-slate);
+            color: var(--muted);
         }
 
-        /* Halal / allergen note */
         .halal-note {
             margin-top: 14px;
             padding: 8px 12px;
-            border: 1px solid rgba(201, 201, 226, 0.15);
+            border: 1px solid var(--rule);
             border-radius: 8px;
             text-align: center;
             direction: rtl;
             font-size: 11px;
-            color: rgba(255, 255, 255, 0.4);
-            z-index: 5;
+            color: var(--muted);
         }
 
         .halal-note strong {
-            color: var(--accent-silver);
-            font-weight: 700;
-        }
-
-        /* End Slide */
-        .outro-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            gap: 30px;
-            text-align: center;
-        }
-
-        .insta-tag {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            margin-top: 16px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.07);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.45);
-            z-index: 5;
-            letter-spacing: 0.3px;
-        }
-
-        .insta-tag svg {
-            width: 13px;
-            height: 13px;
-            flex-shrink: 0;
-        }
-
-        .qr-frame-box {
-            width: 155px;
-            height: 155px;
-            border: 2px solid var(--accent-silver);
-            background: #FFFFFF;
-            padding: 12px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .phone-tag {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            margin-top: 6px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.45);
-            z-index: 5;
-            letter-spacing: 0.3px;
-        }
-
-        .phone-tag a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .phone-tag a:hover {
-            color: var(--accent-silver);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .story-slide {
-            scroll-margin-top: 20px;
+            color: var(--navy);
+            font-weight: 800;
         }
 
         /* Index / Table of Contents */
         .index-list {
             display: flex;
             flex-direction: column;
-            gap: 11px;
-            z-index: 5;
         }
 
         .index-item {
@@ -442,13 +278,12 @@
             direction: rtl;
             text-decoration: none;
             color: inherit;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            padding-bottom: 9px;
+            padding: 10px 6px;
             transition: background 0.15s ease;
         }
 
-        .index-item:hover {
-            background: rgba(201, 201, 226, 0.08);
+        .index-item:nth-child(even) {
+            background: var(--band-tint);
         }
 
         .index-item-text {
@@ -458,37 +293,96 @@
 
         .index-item-ar {
             font-size: 15px;
-            font-weight: 400;
+            font-weight: 700;
         }
 
         .index-item-en {
             font-family: 'Montserrat', sans-serif;
             font-size: 11px;
-            color: var(--muted-slate);
+            font-weight: 700;
+            color: var(--muted);
             margin-top: 2px;
         }
 
         .index-item-page {
             font-family: 'Montserrat', sans-serif;
             font-size: 15px;
-            font-weight: 700;
-            color: var(--accent-silver);
+            font-weight: 800;
+            color: var(--navy);
             min-width: 24px;
             text-align: center;
             flex-shrink: 0;
         }
 
-        /* Per-slide page number */
-        .page-number {
-            position: absolute;
-            bottom: 14px;
-            left: 16px;
+        /* Footer on every interior page */
+        .page-footer {
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px solid var(--rule);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-family: 'Montserrat', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.3);
-            z-index: 5;
+            font-size: 10.5px;
             letter-spacing: 0.5px;
+            color: var(--muted);
+        }
+
+        .page-footer .footer-brand {
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: var(--navy);
+            text-transform: uppercase;
+        }
+
+        /* Closing page contact block */
+        .contact-block {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .contact-block .address-line {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+
+        .insta-tag,
+        .phone-tag {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--muted);
+            letter-spacing: 0.3px;
+            margin-top: 6px;
+        }
+
+        .insta-tag svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        .insta-tag a,
+        .phone-tag a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .insta-tag a:hover,
+        .phone-tag a:hover {
+            color: var(--navy);
         }
 
         /* Print layout — one slide per printed page, no screen-only chrome */
@@ -504,7 +398,7 @@
                 min-height: 0;
                 margin-bottom: 0;
                 box-shadow: none;
-                border-radius: 0;
+                border: none;
                 break-after: page;
                 page-break-after: always;
             }
@@ -522,784 +416,903 @@
     <!-- Cover -->
     <div class="story-slide">
         <div class="cover-wrapper">
-            <img src="almood-logo.jpg" alt="Almood Shop Logo" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid var(--accent-silver);margin-bottom:18px;" />
-            <div class="main-brand-logo" style="font-size: 58px; letter-spacing: -1px;">ALMOOD</div>
-            <div style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 5px; color: var(--accent-silver); margin-top: -6px;">SHOP</div>
+            <img src="almood-logo.jpg" alt="Almood Shop Logo"
+                style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid var(--navy);margin-bottom:18px;" />
+            <div class="main-brand-logo">ALMOOD</div>
+            <div class="shop-subtitle">SHOP</div>
             <div class="script-menu-title">Menu</div>
-            <div
-                style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 1000; letter-spacing: 2.5px; color: #FFFF; margin-top: 80px; text-transform: uppercase; opacity: 0.85;">
-                COFFEE &nbsp;·&nbsp; DESSERTS &nbsp;·&nbsp; FRESH FRUITS</div>
+            <div class="cover-tagline">COFFEE &nbsp;·&nbsp; DESSERTS &nbsp;·&nbsp; FRESH FRUITS</div>
+        </div>
+        <div class="contact-block" style="margin: 0 30px 30px;">
+            <div class="insta-tag">
+                <a href="https://www.instagram.com/almoodshop.egy/" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <circle cx="12" cy="12" r="4" />
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                    </svg>
+                    @almoodshop.egy
+                </a>
+            </div>
+            <div class="phone-tag">
+                <a href="tel:+201271807777">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
+                        <path
+                            d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-.54a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                    </svg>
+                    +20 127 180 7777
+                </a>
+            </div>
         </div>
     </div>
 
     <!-- Index -->
     <div class="story-slide" id="index">
-        <div class="slide-header">
-            <h2>المحتويات</h2>
-            <span class="en-sub">Menu Index</span>
-            <span class="ar-tagline">دليل أقسام القائمة</span>
+        <div class="page-header-band">
+            <span class="band-en">Menu Index</span>
+            <span class="band-ar">المحتويات</span>
         </div>
-        <div class="index-list">
-            <a class="index-item" href="#hot-beverages">
-                <span class="index-item-text">
-                    <span class="index-item-ar">المشروبات الساخنة</span>
-                    <span class="index-item-en">Hot Beverages</span>
-                </span>
-            </a>
-            <a class="index-item" href="#iced-coffee">
-                <span class="index-item-text">
-                    <span class="index-item-ar">مشروبات قهوة باردة</span>
-                    <span class="index-item-en">Iced Specialty Coffee</span>
-                </span>
-            </a>
-            <a class="index-item" href="#frappuccinos">
-                <span class="index-item-text">
-                    <span class="index-item-ar">فرابتشينو</span>
-                    <span class="index-item-en">Blended Frappuccinos</span>
-                </span>
-            </a>
-            <a class="index-item" href="#milkshakes">
-                <span class="index-item-text">
-                    <span class="index-item-ar">ميلك شيك</span>
-                    <span class="index-item-en">Thick Craft Milkshakes</span>
-                </span>
-            </a>
-            <a class="index-item" href="#sodas-mojitos">
-                <span class="index-item-text">
-                    <span class="index-item-ar">الصودا والموخيتو</span>
-                    <span class="index-item-en">Refreshing Sodas & Mojitos</span>
-                </span>
-            </a>
-            <a class="index-item" href="#juices-cocktails">
-                <span class="index-item-text">
-                    <span class="index-item-ar">الكوكتيل والعصائر الطبيعية</span>
-                    <span class="index-item-en">Fresh Juices & House Blends</span>
-                </span>
-            </a>
-            <a class="index-item" href="#extras">
-                <span class="index-item-text">
-                    <span class="index-item-ar">إضافات المود شوب</span>
-                    <span class="index-item-en">Customize Your Order</span>
-                </span>
-            </a>
-            <a class="index-item" href="#waffles-crepes">
-                <span class="index-item-text">
-                    <span class="index-item-ar">الوافل والكريب</span>
-                    <span class="index-item-en">The Gourmet Waffle & Crepe Lab</span>
-                </span>
-            </a>
-            <a class="index-item" href="#mini-pancakes">
-                <span class="index-item-text">
-                    <span class="index-item-ar">ميني بان كيك</span>
-                    <span class="index-item-en">Craft Mini Pancakes</span>
-                </span>
-            </a>
-            <a class="index-item" href="#cinnabons">
-                <span class="index-item-text">
-                    <span class="item-identity">
-                        <span class="index-item-ar">سينابون</span>
-                        <span class="premium-badge">Recommended</span>
+        <div class="page-body">
+            <div class="index-list">
+                <a class="index-item" href="#hot-beverages">
+                    <span class="index-item-text">
+                        <span class="index-item-ar">المشروبات الساخنة</span>
+                        <span class="index-item-en">Hot Beverages</span>
                     </span>
-                    <span class="index-item-en">Freshly Baked Cinnabons</span>
-                </span>
-            </a>
-            <a class="index-item" href="#pastries">
-                <span class="index-item-text">
-                    <span class="index-item-ar">حلويات فاخرة</span>
-                    <span class="index-item-en">Premium Pastry Selection</span>
-                </span>
-            </a>
+                </a>
+                <a class="index-item" href="#iced-coffee">
+                    <span class="index-item-text">
+                        <span class="index-item-ar">مشروبات قهوة باردة</span>
+                        <span class="index-item-en">Iced Specialty Coffee</span>
+                    </span>
+                </a>
+                <a class="index-item" href="#frappuccinos">
+                    <span class="index-item-text">
+                        <span class="index-item-ar">فرابتشينو</span>
+                        <span class="index-item-en">Blended Frappuccinos</span>
+                    </span>
+                </a>
+                <a class="index-item" href="#milkshakes">
+                    <span class="index-item-text">
+                        <span class="index-item-ar">ميلك شيك</span>
+                        <span class="index-item-en">Thick Craft Milkshakes</span>
+                    </span>
+                </a>
+                <a class="index-item" href="#sodas-mojitos">
+                    <span class="index-item-text">
+                        <span class="index-item-ar">الصودا والموخيتو</span>
+                        <span class="index-item-en">Refreshing Sodas & Mojitos</span>
+                    </span>
+                </a>
+                <a class="index-item" href="#juices-cocktails">
+                    <span class="index-item-text">
+                        <span class="index-item-ar">الكوكتيل والعصائر الطبيعية</span>
+                        <span class="index-item-en">Fresh Juices & House Blends</span>
+                    </span>
+                </a>
+                <a class="index-item" href="#extras">
+                    <span class="index-item-text">
+                        <span class="index-item-ar">إضافات المود شوب</span>
+                        <span class="index-item-en">Customize Your Order</span>
+                    </span>
+                </a>
+                <a class="index-item" href="#waffles-crepes">
+                    <span class="index-item-text">
+                        <span class="index-item-ar">الوافل والكريب</span>
+                        <span class="index-item-en">The Gourmet Waffle & Crepe Lab</span>
+                    </span>
+                </a>
+                <a class="index-item" href="#mini-pancakes">
+                    <span class="index-item-text">
+                        <span class="index-item-ar">ميني بان كيك</span>
+                        <span class="index-item-en">Craft Mini Pancakes</span>
+                    </span>
+                </a>
+                <a class="index-item" href="#cinnabons">
+                    <span class="index-item-text">
+                        <span class="item-identity">
+                            <span class="premium-badge">Recommended</span>
+                            <span class="index-item-ar">سينابون</span>
+                        </span>
+                        <span class="index-item-en">Freshly Baked Cinnabons</span>
+                    </span>
+                </a>
+                <a class="index-item" href="#pastries">
+                    <span class="index-item-text">
+                        <span class="index-item-ar">حلويات فاخرة</span>
+                        <span class="index-item-en">Premium Pastry Selection</span>
+                    </span>
+                </a>
+            </div>
+            <div class="page-footer">
+                <span class="footer-brand">Almood Shop</span>
+                <span class="footer-page"></span>
+            </div>
         </div>
     </div>
 
     <!-- Hot Beverages -->
     <div class="story-slide" id="hot-beverages">
-        <div class="slide-header">
-            <h2>المشروبات الساخنة</h2>
-            <span class="en-sub">Hot Beverages</span>
-            <span class="ar-tagline">اختر مشروبك الساخن المفضل</span>
+        <div class="page-header-band">
+            <span class="band-en">Hot Beverages</span>
+            <span class="band-ar">المشروبات الساخنة</span>
         </div>
-        <div class="product-image-frame">
-            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=600"
-                alt="Premium Espresso/Latte Art">
-        </div>
-        <div class="dual-labels"><span>L</span><span>M</span></div>
-        <div class="menu-list-wrapper">
-            <div class="menu-item-row">
-                <div class="item-title">قهوة تركي</div>
-                <div class="price-matrix"><span class="price-m-value">35</span><span class="price-l-value">50</span>
+        <div class="page-body">
+            <div class="col-labels">
+                <div></div>
+                <div class="col-labels-price"><span>L</span><span>M</span></div>
+                <div></div>
+            </div>
+            <div class="menu-list-wrapper">
+                <div class="menu-item-row">
+                    <div class="item-name-en">Turkish Coffee</div>
+                    <div class="price-matrix"><span>50</span><span>35</span></div>
+                    <div class="item-name-ar">قهوة تركي</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Tea</div>
+                    <div class="price-matrix"><span>—</span><span>30</span></div>
+                    <div class="item-name-ar">شاي</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Espresso</div>
+                    <div class="price-matrix"><span>55</span><span>45</span></div>
+                    <div class="item-name-ar">اسبريسو</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Macchiato</div>
+                    <div class="price-matrix"><span>—</span><span>65</span></div>
+                    <div class="item-name-ar">كافي ماكياتو</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Caffè Latte</div>
+                    <div class="price-matrix"><span>90</span><span>75</span></div>
+                    <div class="item-name-ar">كافي لاتيه</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Flat White</div>
+                    <div class="price-matrix"><span>—</span><span>85</span></div>
+                    <div class="item-name-ar">فلات وايت</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Cappuccino</div>
+                    <div class="price-matrix"><span>90</span><span>75</span></div>
+                    <div class="item-name-ar">كابتشينو</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Nescafé</div>
+                    <div class="price-matrix"><span>70</span><span>60</span></div>
+                    <div class="item-name-ar">نسكافيه</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Caffè Mocha</div>
+                    <div class="price-matrix"><span>95</span><span>80</span></div>
+                    <div class="item-name-ar">كافي موكا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">White Mocha</div>
+                    <div class="price-matrix"><span>95</span><span>80</span></div>
+                    <div class="item-name-ar">كافي وايت موكا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">French Vanilla</div>
+                    <div class="price-matrix"><span>75</span><span>60</span></div>
+                    <div class="item-name-ar">فرنش فانيلا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Hot Chocolate</div>
+                    <div class="price-matrix"><span>90</span><span>75</span></div>
+                    <div class="item-name-ar">هوت تشوكليت</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Spanish Latte</div>
+                    <div class="price-matrix"><span>120</span><span>95</span></div>
+                    <div class="item-name-ar">سبانش لاتيه</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Hot Nutella</div>
+                    <div class="price-matrix"><span>105</span><span>90</span></div>
+                    <div class="item-name-ar">هوت نوتيلا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Hot Pistachio</div>
+                    <div class="price-matrix"><span>105</span><span>90</span></div>
+                    <div class="item-identity">
+                        <span class="premium-badge">Signature</span>
+                        <span class="item-name-ar">هوت بستاشيو</span>
+                    </div>
                 </div>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">شاي</div>
-                <div class="price-matrix"><span class="price-m-value">30</span><span class="price-l-value">—</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">اسبريسو</div>
-                <div class="price-matrix"><span class="price-m-value">45</span><span class="price-l-value">55</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">كافي ماكياتو</div>
-                <div class="price-matrix"><span class="price-m-value">65</span><span class="price-l-value">—</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">كافي لاتيه</div>
-                <div class="price-matrix"><span class="price-m-value">75</span><span class="price-l-value">90</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">فلات وايت</div>
-                <div class="price-matrix"><span class="price-m-value">85</span><span class="price-l-value">—</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">كابتشينو</div>
-                <div class="price-matrix"><span class="price-m-value">75</span><span class="price-l-value">90</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">نسكافيه</div>
-                <div class="price-matrix"><span class="price-m-value">60</span><span class="price-l-value">70</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">كافي موكا</div>
-                <div class="price-matrix"><span class="price-m-value">80</span><span class="price-l-value">95</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">كافي وايت موكا</div>
-                <div class="price-matrix"><span class="price-m-value">80</span><span class="price-l-value">95</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">فرنش فانيلا</div>
-                <div class="price-matrix"><span class="price-m-value">60</span><span class="price-l-value">75</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">هوت تشوكليت</div>
-                <div class="price-matrix"><span class="price-m-value">75</span><span class="price-l-value">90</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">سبانش لاتيه</div>
-                <div class="price-matrix"><span class="price-m-value">95</span><span class="price-l-value">120</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">هوت نوتيلا</div>
-                <div class="price-matrix"><span class="price-m-value">90</span><span class="price-l-value">105</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-identity"><span class="item-title">هوت بستاشيو</span><span
-                        class="premium-badge">Signature</span></div>
-                <div class="price-matrix"><span class="price-m-value">90</span><span class="price-l-value">105</span>
-                </div>
+            <div class="page-footer">
+                <span class="footer-brand">Almood Shop</span>
+                <span class="footer-page"></span>
             </div>
         </div>
     </div>
 
     <!-- Iced Coffee -->
     <div class="story-slide" id="iced-coffee">
-        <div class="slide-header">
-            <h2>مشروبات قهوة باردة</h2>
-            <span class="en-sub">Iced Specialty Coffee</span>
-            <span class="ar-tagline">انتعش بكل رشفة باردة</span>
+        <div class="page-header-band">
+            <span class="band-en">Iced Coffee</span>
+            <span class="band-ar">مشروبات قهوة باردة</span>
         </div>
-        <div class="product-image-frame">
-            <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=600"
-                alt="Premium Cold Brew / Iced Latte">
-        </div>
-        <div class="dual-labels"><span>L</span><span>M</span></div>
-        <div class="menu-list-wrapper">
-            <div class="menu-item-row">
-                <div class="item-title">ايس لاتيه</div>
-                <div class="price-matrix"><span class="price-m-value">95</span><span class="price-l-value">110</span>
+        <div class="page-body">
+            <div class="col-labels">
+                <div></div>
+                <div class="col-labels-price"><span>L</span><span>M</span></div>
+                <div></div>
+            </div>
+            <div class="menu-list-wrapper">
+                <div class="menu-item-row">
+                    <div class="item-name-en">Iced Latte</div>
+                    <div class="price-matrix"><span>110</span><span>95</span></div>
+                    <div class="item-name-ar">ايس لاتيه</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Iced Mocha</div>
+                    <div class="price-matrix"><span>120</span><span>105</span></div>
+                    <div class="item-name-ar">ايس موكا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Iced Americano</div>
+                    <div class="price-matrix"><span>85</span><span>70</span></div>
+                    <div class="item-name-ar">ايس أمريكانو</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Iced Chocolate</div>
+                    <div class="price-matrix"><span>100</span><span>95</span></div>
+                    <div class="item-name-ar">ايس تشوكليت</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Iced Peach Tea</div>
+                    <div class="price-matrix"><span>100</span><span>95</span></div>
+                    <div class="item-name-ar">ايس تي خوخ</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Iced White Mocha</div>
+                    <div class="price-matrix"><span>120</span><span>105</span></div>
+                    <div class="item-name-ar">ايس وايت موكا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Iced Caramel Macchiato</div>
+                    <div class="price-matrix"><span>120</span><span>105</span></div>
+                    <div class="item-name-ar">ايس كراميل ماكياتو</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Iced Spanish Latte</div>
+                    <div class="price-matrix"><span>120</span><span>105</span></div>
+                    <div class="item-identity">
+                        <span class="premium-badge">Best Seller</span>
+                        <span class="item-name-ar">ايس سبانش لاتيه</span>
+                    </div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Iced Lotus Latte</div>
+                    <div class="price-matrix"><span>120</span><span>110</span></div>
+                    <div class="item-name-ar">ايس لاتيه لوتس</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Iced Matcha Latte</div>
+                    <div class="price-matrix"><span>120</span><span>105</span></div>
+                    <div class="item-name-ar">ايس ماتشا لاتيه</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Iced Pistachio Latte</div>
+                    <div class="price-matrix"><span>130</span><span>120</span></div>
+                    <div class="item-name-ar">ايس لاتيه بستاشيو</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Affogato</div>
+                    <div class="price-matrix"><span>—</span><span>95</span></div>
+                    <div class="item-name-ar">افوكاتو</div>
                 </div>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">ايس موكا</div>
-                <div class="price-matrix"><span class="price-m-value">105</span><span class="price-l-value">120</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">ايس أمريكانو</div>
-                <div class="price-matrix"><span class="price-m-value">70</span><span class="price-l-value">85</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">ايس تشوكليت</div>
-                <div class="price-matrix"><span class="price-m-value">95</span><span class="price-l-value">100</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">ايس تي خوخ</div>
-                <div class="price-matrix"><span class="price-m-value">95</span><span class="price-l-value">100</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">ايس وايت موكا</div>
-                <div class="price-matrix"><span class="price-m-value">105</span><span class="price-l-value">120</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">ايس كراميل ماكياتو</div>
-                <div class="price-matrix"><span class="price-m-value">105</span><span class="price-l-value">120</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-identity"><span class="item-title">ايس سبانش لاتيه</span><span
-                        class="premium-badge">Best Seller</span></div>
-                <div class="price-matrix"><span class="price-m-value">105</span><span class="price-l-value">120</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">ايس لاتيه لوتس</div>
-                <div class="price-matrix"><span class="price-m-value">110</span><span class="price-l-value">120</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">ايس ماتشا لاتيه</div>
-                <div class="price-matrix"><span class="price-m-value">105</span><span class="price-l-value">120</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">ايس لاتيه بستاشيو</div>
-                <div class="price-matrix"><span class="price-m-value">120</span><span class="price-l-value">130</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">افوكاتو</div>
-                <div class="price-matrix"><span class="price-m-value">95</span><span class="price-l-value">—</span>
-                </div>
+            <div class="page-footer">
+                <span class="footer-brand">Almood Shop</span>
+                <span class="footer-page"></span>
             </div>
         </div>
     </div>
 
     <!-- Frappuccinos -->
     <div class="story-slide" id="frappuccinos">
-        <div class="slide-header">
-            <h2>فرابتشينو</h2>
-            <span class="en-sub">Blended Frappuccinos</span>
-            <span class="ar-tagline">مذاق لا يُقاوم في كل كوب</span>
+        <div class="page-header-band">
+            <span class="band-en">Frappuccinos</span>
+            <span class="band-ar">فرابتشينو</span>
         </div>
-        <div class="product-image-frame">
-            <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&q=80&w=600"
-                alt="Frappuccino Blender Drink">
-        </div>
-        <div class="dual-labels"><span>L</span><span>M</span></div>
-        <div class="menu-list-wrapper">
-            <div class="menu-item-row">
-                <div class="item-title">فرابتشينو كراميل</div>
-                <div class="price-matrix"><span class="price-m-value">105</span><span class="price-l-value">120</span>
+        <div class="page-body">
+            <div class="col-labels">
+                <div></div>
+                <div class="col-labels-price"><span>L</span><span>M</span></div>
+                <div></div>
+            </div>
+            <div class="menu-list-wrapper">
+                <div class="menu-item-row">
+                    <div class="item-name-en">Caramel Frappuccino</div>
+                    <div class="price-matrix"><span>120</span><span>105</span></div>
+                    <div class="item-name-ar">فرابتشينو كراميل</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Vanilla Frappuccino</div>
+                    <div class="price-matrix"><span>120</span><span>105</span></div>
+                    <div class="item-name-ar">فرابتشينو فانيلا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Cookies Frappuccino</div>
+                    <div class="price-matrix"><span>120</span><span>105</span></div>
+                    <div class="item-identity">
+                        <span class="premium-badge">Favorite</span>
+                        <span class="item-name-ar">فرابتشينو كوكيز</span>
+                    </div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Brownie Frappuccino</div>
+                    <div class="price-matrix"><span>120</span><span>105</span></div>
+                    <div class="item-name-ar">فرابتشينو براوني</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Chocolate Frappuccino</div>
+                    <div class="price-matrix"><span>120</span><span>105</span></div>
+                    <div class="item-name-ar">فرابتشينو تشوكليت</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Strawberry Frappuccino</div>
+                    <div class="price-matrix"><span>120</span><span>105</span></div>
+                    <div class="item-name-ar">فرابتشينو فراولة</div>
                 </div>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">فرابتشينو فانيلا</div>
-                <div class="price-matrix"><span class="price-m-value">105</span><span class="price-l-value">120</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-identity"><span class="item-title">فرابتشينو كوكيز</span><span
-                        class="premium-badge">Favorite</span></div>
-                <div class="price-matrix"><span class="price-m-value">105</span><span class="price-l-value">120</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">فرابتشينو براوني</div>
-                <div class="price-matrix"><span class="price-m-value">105</span><span class="price-l-value">120</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">فرابتشينو تشوكليت</div>
-                <div class="price-matrix"><span class="price-m-value">105</span><span class="price-l-value">120</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">فرابتشينو فراولة</div>
-                <div class="price-matrix"><span class="price-m-value">105</span><span class="price-l-value">120</span>
-                </div>
+            <div class="page-footer">
+                <span class="footer-brand">Almood Shop</span>
+                <span class="footer-page"></span>
             </div>
         </div>
     </div>
 
     <!-- Milkshakes -->
     <div class="story-slide" id="milkshakes">
-        <div class="slide-header">
-            <h2>ميلك شيك</h2>
-            <span class="en-sub">Thick Craft Milkshakes</span>
-            <span class="ar-tagline">كثيف • طازج • لا يُنسى</span>
+        <div class="page-header-band">
+            <span class="band-en">Milkshakes</span>
+            <span class="band-ar">ميلك شيك</span>
         </div>
-        <div class="product-image-frame">
-            <img src="https://www.unicornsinthekitchen.com/wp-content/uploads/2019/07/Ultimate-Nutella-Milkshake-square.jpg"
-                alt="Gourmet Chocolate Milkshake">
-        </div>
-        <div class="dual-labels"><span>L</span><span>M</span></div>
-        <div class="menu-list-wrapper">
-            <div class="menu-item-row">
-                <div class="item-title">تشوكليت</div>
-                <div class="price-matrix"><span class="price-m-value">100</span><span class="price-l-value">110</span>
+        <div class="page-body">
+            <div class="col-labels">
+                <div></div>
+                <div class="col-labels-price"><span>L</span><span>M</span></div>
+                <div></div>
+            </div>
+            <div class="menu-list-wrapper">
+                <div class="menu-item-row">
+                    <div class="item-name-en">Chocolate</div>
+                    <div class="price-matrix"><span>110</span><span>100</span></div>
+                    <div class="item-name-ar">تشوكليت</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Strawberry</div>
+                    <div class="price-matrix"><span>110</span><span>100</span></div>
+                    <div class="item-name-ar">فراولة</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Vanilla</div>
+                    <div class="price-matrix"><span>110</span><span>100</span></div>
+                    <div class="item-name-ar">فانيلا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Caramel</div>
+                    <div class="price-matrix"><span>110</span><span>100</span></div>
+                    <div class="item-name-ar">كراميل</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Nutella</div>
+                    <div class="price-matrix"><span>160</span><span>140</span></div>
+                    <div class="item-name-ar">نوتيلا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Lotus</div>
+                    <div class="price-matrix"><span>160</span><span>140</span></div>
+                    <div class="item-name-ar">لوتس</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Oreo</div>
+                    <div class="price-matrix"><span>160</span><span>140</span></div>
+                    <div class="item-name-ar">اوريو</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Kinder</div>
+                    <div class="price-matrix"><span>160</span><span>140</span></div>
+                    <div class="item-name-ar">كيندر</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Nutella Cinnamon Milkshake</div>
+                    <div class="price-matrix"><span>160</span><span>140</span></div>
+                    <div class="item-identity">
+                        <span class="premium-badge">New Item</span>
+                        <span class="item-name-ar">نوتيلا سينامون ميلك شيك</span>
+                    </div>
                 </div>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">فراولة</div>
-                <div class="price-matrix"><span class="price-m-value">100</span><span class="price-l-value">110</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">فانيلا</div>
-                <div class="price-matrix"><span class="price-m-value">100</span><span class="price-l-value">110</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">كراميل</div>
-                <div class="price-matrix"><span class="price-m-value">100</span><span class="price-l-value">110</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">نوتيلا</div>
-                <div class="price-matrix"><span class="price-m-value">140</span><span class="price-l-value">160</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">لوتس</div>
-                <div class="price-matrix"><span class="price-m-value">140</span><span class="price-l-value">160</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">اوريو</div>
-                <div class="price-matrix"><span class="price-m-value">140</span><span class="price-l-value">160</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">كيندر</div>
-                <div class="price-matrix"><span class="price-m-value">140</span><span class="price-l-value">160</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-identity"><span class="item-title">نوتيلا سينامون ميلك شيك</span><span
-                        class="premium-badge">New Item</span></div>
-                <div class="price-matrix"><span class="price-m-value">140</span><span class="price-l-value">160</span>
-                </div>
+            <div class="page-footer">
+                <span class="footer-brand">Almood Shop</span>
+                <span class="footer-page"></span>
             </div>
         </div>
     </div>
 
     <!-- Sodas & Mojitos -->
     <div class="story-slide" id="sodas-mojitos">
-        <div class="slide-header">
-            <h2>الصودا والموخيتو</h2>
-            <span class="en-sub">Refreshing Sodas & Mojitos</span>
-            <span class="ar-tagline">استمتع بالانتعاش الحقيقي</span>
+        <div class="page-header-band">
+            <span class="band-en">Sodas &amp; Mojitos</span>
+            <span class="band-ar">الصودا والموخيتو</span>
         </div>
-        <div class="product-image-frame">
-            <img src="https://www.acouplecooks.com/wp-content/uploads/2021/08/Blueberry-Mojito-003.jpg"
-                alt="Fresh Mojito & Sodas">
-        </div>
-        <div class="dual-labels"><span>L</span><span>M</span></div>
-        <div class="menu-list-wrapper">
-            <div class="menu-item-row">
-                <div class="item-identity"><span class="item-title">موخيتو ريد بول</span><span
-                        class="premium-badge">Ultimate Vibe</span></div>
-                <div class="price-matrix"><span class="price-m-value">—</span><span class="price-l-value">160</span>
+        <div class="page-body">
+            <div class="col-labels">
+                <div></div>
+                <div class="col-labels-price"><span>L</span><span>M</span></div>
+                <div></div>
+            </div>
+            <div class="menu-list-wrapper">
+                <div class="menu-item-row">
+                    <div class="item-name-en">Red Bull Mojito</div>
+                    <div class="price-matrix"><span>160</span><span>—</span></div>
+                    <div class="item-identity">
+                        <span class="premium-badge">Ultimate Vibe</span>
+                        <span class="item-name-ar">موخيتو ريد بول</span>
+                    </div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Classic Mojito</div>
+                    <div class="price-matrix"><span>100</span><span>—</span></div>
+                    <div class="item-name-ar">موخيتو كلاسيك</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Italian Soda</div>
+                    <div class="price-matrix"><span>90</span><span>—</span></div>
+                    <div class="item-name-ar">ايطاليان صودا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Red Bull</div>
+                    <div class="price-matrix"><span>—</span><span>90</span></div>
+                    <div class="item-name-ar">ريد بول</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Cola</div>
+                    <div class="price-matrix"><span>—</span><span>30</span></div>
+                    <div class="item-name-ar">كولا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Water</div>
+                    <div class="price-matrix"><span>—</span><span>10</span></div>
+                    <div class="item-name-ar">مياه</div>
                 </div>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">موخيتو كلاسيك</div>
-                <div class="price-matrix"><span class="price-m-value">—</span><span class="price-l-value">100</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">ايطاليان صودا</div>
-                <div class="price-matrix"><span class="price-m-value">—</span><span class="price-l-value">90</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">ريد بول</div>
-                <div class="price-matrix"><span class="price-m-value">90</span><span class="price-l-value">—</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">كولا</div>
-                <div class="price-matrix"><span class="price-m-value">30</span><span class="price-l-value">—</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">مياه</div>
-                <div class="price-matrix"><span class="price-m-value">10</span><span class="price-l-value">—</span>
-                </div>
+            <div class="page-footer">
+                <span class="footer-brand">Almood Shop</span>
+                <span class="footer-page"></span>
             </div>
         </div>
     </div>
 
     <!-- Juices & Cocktails -->
     <div class="story-slide" id="juices-cocktails">
-        <div class="slide-header">
-            <h2>الكوكتيل والعصائر الطبيعية</h2>
-            <span class="en-sub">Fresh Juices & House Blends</span>
-            <span class="ar-tagline">طازج من الطبيعة لك</span>
+        <div class="page-header-band">
+            <span class="band-en">Juices &amp; Cocktails</span>
+            <span class="band-ar">الكوكتيل والعصائر الطبيعية</span>
         </div>
-        <div class="product-image-frame">
-            <img src="https://images.unsplash.com/photo-1610970881699-44a5587cabec?auto=format&fit=crop&q=80&w=600"
-                alt="Fresh Tropical Juices">
-        </div>
-        <div class="dual-labels"><span>L</span><span>M</span></div>
-        <div class="menu-list-wrapper">
-            <div class="menu-item-row">
-                <div class="item-title">قيصر (كيوي + برتقال)</div>
-                <div class="price-matrix"><span class="price-m-value">85</span><span class="price-l-value">100</span>
+        <div class="page-body">
+            <div class="col-labels">
+                <div></div>
+                <div class="col-labels-price"><span>L</span><span>M</span></div>
+                <div></div>
+            </div>
+            <div class="menu-list-wrapper">
+                <div class="menu-item-row">
+                    <div class="item-name-en">Caesar (Kiwi + Orange)</div>
+                    <div class="price-matrix"><span>100</span><span>85</span></div>
+                    <div class="item-name-ar">قيصر (كيوي + برتقال)</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Jamaica (Strawberry + Citrus)</div>
+                    <div class="price-matrix"><span>100</span><span>85</span></div>
+                    <div class="item-name-ar">جمايكا (فراولة + حمضيات)</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Almood Shop Special Cocktail</div>
+                    <div class="price-matrix"><span>100</span><span>85</span></div>
+                    <div class="item-identity">
+                        <span class="premium-badge">Signature</span>
+                        <span class="item-name-ar">كوكتيل المود شوب الخاص</span>
+                    </div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Avocado Cocktail</div>
+                    <div class="price-matrix"><span>160</span><span>130</span></div>
+                    <div class="item-name-ar">كوكتيل الأفوكادو</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Avocado &amp; Mango</div>
+                    <div class="price-matrix"><span>160</span><span>130</span></div>
+                    <div class="item-name-ar">افوكادو ومانجا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Fakhfakhina / Deluxe Cocktail</div>
+                    <div class="price-matrix"><span>130</span><span>—</span></div>
+                    <div class="item-name-ar">فخفخينا / كوكتيل فاخر</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Fruit Salad</div>
+                    <div class="price-matrix"><span>85</span><span>—</span></div>
+                    <div class="item-name-ar">سلطة فواكه</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Fresh Juice (Mango/Strawberry/Orange/Mint)</div>
+                    <div class="price-matrix"><span>65</span><span>50</span></div>
+                    <div class="item-name-ar">عصائر طبيعية (مانجا/فراولة/برتقال/نعناع)</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Mix (Banana &amp; Strawberry / Flora &amp; Mango)</div>
+                    <div class="price-matrix"><span>65</span><span>50</span></div>
+                    <div class="item-name-ar">مكس (موز وفراولة/فلورا ومانجا)</div>
                 </div>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">جمايكا (فراولة + حمضيات)</div>
-                <div class="price-matrix"><span class="price-m-value">85</span><span class="price-l-value">100</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-identity"><span class="item-title">كوكتيل المود شوب الخاص</span><span
-                        class="premium-badge">Signature</span></div>
-                <div class="price-matrix"><span class="price-m-value">85</span><span class="price-l-value">100</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">كوكتيل الأفوكادو</div>
-                <div class="price-matrix"><span class="price-m-value">130</span><span class="price-l-value">160</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">افوكادو ومانجا</div>
-                <div class="price-matrix"><span class="price-m-value">130</span><span class="price-l-value">160</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">فخفخينا / كوكتيل فاخر</div>
-                <div class="price-matrix"><span class="price-m-value">—</span><span class="price-l-value">130</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">سلطة فواكه</div>
-                <div class="price-matrix"><span class="price-m-value">—</span><span class="price-l-value">85</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">عصائر طبيعية (مانجا/فراولة/برتقال/نعناع)</div>
-                <div class="price-matrix"><span class="price-m-value">50</span><span class="price-l-value">65</span>
-                </div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">مكس (موز وفراولة/فلورا ومانجا)</div>
-                <div class="price-matrix"><span class="price-m-value">50</span><span class="price-l-value">65</span>
-                </div>
+            <div class="page-footer">
+                <span class="footer-brand">Almood Shop</span>
+                <span class="footer-page"></span>
             </div>
         </div>
     </div>
 
     <!-- Almood Shop Extras -->
     <div class="story-slide" id="extras">
-        <div class="slide-header">
-            <h2>إضافات المود شوب</h2>
-            <span class="en-sub">Customize Your Order</span>
-            <span class="ar-tagline">خلّي تجربتك فريدة من نوعها</span>
+        <div class="page-header-band">
+            <span class="band-en">Customize Your Order</span>
+            <span class="band-ar">إضافات المود شوب</span>
         </div>
-        <div class="product-image-frame" style="height: 170px;">
-            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=600"
-                alt="Coffee Customization Extras">
-        </div>
-        <div class="dual-labels"><span>السعر</span></div>
-        <div class="menu-list-wrapper">
-            <div class="menu-item-row">
-                <div class="item-title">شراب إضافي (فانيلا / كراميل / هيزل نت)</div>
-                <div class="price-matrix"><span class="price-l-value">50</span></div>
+        <div class="page-body">
+            <div class="col-labels">
+                <div></div>
+                <div class="col-labels-price"><span>EGP</span></div>
+                <div></div>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">شراب بستاشيو / لوتس / لافندر</div>
-                <div class="price-matrix"><span class="price-l-value">50</span></div>
+            <div class="menu-list-wrapper">
+                <div class="menu-item-row">
+                    <div class="item-name-en">Extra Syrup (Vanilla/Caramel/Hazelnut)</div>
+                    <div class="price-matrix"><span>50</span></div>
+                    <div class="item-name-ar">شراب إضافي (فانيلا / كراميل / هيزل نت)</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Pistachio/Lotus/Lavender Syrup</div>
+                    <div class="price-matrix"><span>50</span></div>
+                    <div class="item-name-ar">شراب بستاشيو / لوتس / لافندر</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Extra Espresso Shot</div>
+                    <div class="price-matrix"><span>50</span></div>
+                    <div class="item-name-ar">شوت اسبريسو إضافي</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Milk Alternative (Almond/Oat/Soy)</div>
+                    <div class="price-matrix"><span>50</span></div>
+                    <div class="item-name-ar">تغيير الحليب (لوز / شوفان / صويا)</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Whipped Cream</div>
+                    <div class="price-matrix"><span>40</span></div>
+                    <div class="item-name-ar">كريمة مخفوقة</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Nutella/Lotus/Pistachio</div>
+                    <div class="price-matrix"><span>50</span></div>
+                    <div class="item-identity">
+                        <span class="premium-badge">Top Pick</span>
+                        <span class="item-name-ar">نوتيلا / لوتس / بستاشيو</span>
+                    </div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Nuts/Coconut/Cinnamon</div>
+                    <div class="price-matrix"><span>50</span></div>
+                    <div class="item-name-ar">مكسرات / جوز هند / قرفة</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Natural Honey</div>
+                    <div class="price-matrix"><span>40</span></div>
+                    <div class="item-name-ar">عسل طبيعي</div>
+                </div>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">شوت اسبريسو إضافي</div>
-                <div class="price-matrix"><span class="price-l-value">50</span></div>
+            <div class="premium-footer-box" style="margin-top: 16px;">
+                <h4>خصّص طلبك كما تحب • Make It Yours</h4>
+                <p>أخبر فريقنا بأي تعديل وسنسعد بتحضيره لك</p>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">تغيير الحليب (لوز / شوفان / صويا)</div>
-                <div class="price-matrix"><span class="price-l-value">50</span></div>
+            <div class="page-footer">
+                <span class="footer-brand">Almood Shop</span>
+                <span class="footer-page"></span>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">كريمة مخفوقة</div>
-                <div class="price-matrix"><span class="price-l-value">40</span></div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-identity"><span class="item-title">نوتيلا / لوتس / بستاشيو</span><span
-                        class="premium-badge">Top Pick</span></div>
-                <div class="price-matrix"><span class="price-l-value">50</span></div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">مكسرات / جوز هند / قرفة</div>
-                <div class="price-matrix"><span class="price-l-value">50</span></div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">عسل طبيعي</div>
-                <div class="price-matrix"><span class="price-l-value">40</span></div>
-            </div>
-        </div>
-        <div class="premium-footer-box" style="margin-top: 16px;">
-            <h4>خصّص طلبك كما تحب • Make It Yours</h4>
-            <p>أخبر فريقنا بأي تعديل وسنسعد بتحضيره لك</p>
         </div>
     </div>
 
     <!-- Waffles & Crepes -->
     <div class="story-slide" id="waffles-crepes">
-        <div class="slide-header">
-            <h2>الوافل والكريب</h2>
-            <span class="en-sub">The Gourmet Waffle & Crepe Lab</span>
-            <span class="ar-tagline">لذة الحلويات الفاخرة</span>
+        <div class="page-header-band">
+            <span class="band-en">Waffles &amp; Crepes</span>
+            <span class="band-ar">الوافل والكريب</span>
         </div>
-        <div class="product-image-frame">
-            <img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&q=80&w=600"
-                alt="Loaded Dessert Waffle & Crepe">
-        </div>
-        <div class="dual-labels"><span>Price</span></div>
-        <div class="menu-list-wrapper">
-            <div class="menu-item-row">
-                <div class="item-title">وافل (نوتيلا / لوتس)</div>
-                <div class="price-matrix"><span class="price-l-value">180 / 190</span></div>
+        <div class="page-body">
+            <div class="col-labels">
+                <div></div>
+                <div class="col-labels-price"><span>EGP</span></div>
+                <div></div>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">وافل مكس / كيندر</div>
-                <div class="price-matrix"><span class="price-l-value">200</span></div>
+            <div class="menu-list-wrapper">
+                <div class="menu-item-row">
+                    <div class="item-name-en">Waffle (Nutella/Lotus)</div>
+                    <div class="price-matrix"><span>180 / 190</span></div>
+                    <div class="item-name-ar">وافل (نوتيلا / لوتس)</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Mix/Kinder Waffle</div>
+                    <div class="price-matrix"><span>200</span></div>
+                    <div class="item-name-ar">وافل مكس / كيندر</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Pistachio Waffle</div>
+                    <div class="price-matrix"><span>220</span></div>
+                    <div class="item-identity">
+                        <span class="premium-badge">Best Seller</span>
+                        <span class="item-name-ar">وافل بستاشيو</span>
+                    </div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Cream &amp; Honey / Fruit Waffle</div>
+                    <div class="price-matrix"><span>180 / 200</span></div>
+                    <div class="item-name-ar">وافل قشطة وعسل / فواكه</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Crepe (Nutella/Lotus)</div>
+                    <div class="price-matrix"><span>180 / 190</span></div>
+                    <div class="item-name-ar">كريب (نوتيلا / لوتس)</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Mix Crepe / Sushi Crepe</div>
+                    <div class="price-matrix"><span>200</span></div>
+                    <div class="item-name-ar">كريب مكس / كريب سوشي</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Kinder Crepe / Ice Cream Crepe</div>
+                    <div class="price-matrix"><span>200 / 220</span></div>
+                    <div class="item-name-ar">كريب كيندر / كريب ايس كريم</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Fortica Crepe (Savory)</div>
+                    <div class="price-matrix"><span>150</span></div>
+                    <div class="item-name-ar">كريب الفورتيكا (مالح)</div>
+                </div>
             </div>
-            <div class="menu-item-row">
-                <div class="item-identity"><span class="item-title">وافل بستاشيو</span><span class="premium-badge">Best
-                        Seller</span></div>
-                <div class="price-matrix"><span class="price-l-value">220</span></div>
+            <div class="premium-footer-box">
+                <h4>إضافات مميزة • Premium Extras (+50 EGP)</h4>
+                <p>إضافة شوكولاتة • إضافة مكسرات • إضافة عسل • إضافة بوله ايس كريم</p>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">وافل قشطة وعسل / فواكه</div>
-                <div class="price-matrix"><span class="price-l-value">180 / 200</span></div>
+            <div class="halal-note">
+                • جميع المكونات طازجة يومياً • خالٍ من المكسرات عند الطلب
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">كريب (نوتيلا / لوتس)</div>
-                <div class="price-matrix"><span class="price-l-value">180 / 190</span></div>
+            <div class="page-footer">
+                <span class="footer-brand">Almood Shop</span>
+                <span class="footer-page"></span>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">كريب مكس / كريب سوشي</div>
-                <div class="price-matrix"><span class="price-l-value">200</span></div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">كريب كيندر / كريب ايس كريم</div>
-                <div class="price-matrix"><span class="price-l-value">200 / 220</span></div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">كريب الفورتيكا (مالح)</div>
-                <div class="price-matrix"><span class="price-l-value">150</span></div>
-            </div>
-        </div>
-        <div class="premium-footer-box">
-            <h4>إضافات مميزة • Premium Extras (+50 EGP)</h4>
-            <p>إضافة شوكولاتة • إضافة مكسرات • إضافة عسل • إضافة بوله ايس كريم</p>
-        </div>
-        <div class="halal-note">
-            • جميع المكونات طازجة يومياً • خالٍ من المكسرات عند الطلب
         </div>
     </div>
 
     <!-- Mini Pancakes -->
     <div class="story-slide" id="mini-pancakes">
-        <div class="slide-header">
-            <h2>ميني بان كيك</h2>
-            <span class="en-sub">Craft Mini Pancakes</span>
-            <span class="ar-tagline">حلو وساخن في كل وقت</span>
+        <div class="page-header-band">
+            <span class="band-en">Mini Pancakes</span>
+            <span class="band-ar">ميني بان كيك</span>
         </div>
-        <div class="product-image-frame">
-            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&q=80&w=600"
-                alt="Stacked Sweet Mini Pancakes">
-        </div>
-        <div class="dual-labels"><span>Large</span><span>Regular</span></div>
-        <div class="menu-list-wrapper">
-            <div class="menu-item-row">
-                <div class="item-title">ميني بان كيك نوتيلا</div>
-                <div class="price-matrix"><span class="price-m-value">150</span><span class="price-l-value">250</span>
+        <div class="page-body">
+            <div class="col-labels">
+                <div></div>
+                <div class="col-labels-price"><span>Large</span><span>Regular</span></div>
+                <div></div>
+            </div>
+            <div class="menu-list-wrapper">
+                <div class="menu-item-row">
+                    <div class="item-name-en">Nutella Mini Pancakes</div>
+                    <div class="price-matrix"><span>250</span><span>150</span></div>
+                    <div class="item-name-ar">ميني بان كيك نوتيلا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Lotus/Kinder Mini Pancakes</div>
+                    <div class="price-matrix"><span>270</span><span>160</span></div>
+                    <div class="item-name-ar">ميني بان كيك لوتس / كيندر</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Pistachio Mini Pancakes</div>
+                    <div class="price-matrix"><span>280</span><span>170</span></div>
+                    <div class="item-identity">
+                        <span class="premium-badge">Trending</span>
+                        <span class="item-name-ar">ميني بان كيك بستاشيو</span>
+                    </div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Mix / Butter &amp; Honey Pancakes</div>
+                    <div class="price-matrix"><span>180</span><span>200</span></div>
+                    <div class="item-name-ar">بان كيك مكس / زبدة وعسل</div>
                 </div>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">ميني بان كيك لوتس / كيندر</div>
-                <div class="price-matrix"><span class="price-m-value">160</span><span class="price-l-value">270</span>
-                </div>
+            <div class="halal-note">
+                • مخبوز طازج يومياً • يمكن التخصيص حسب الطلب
             </div>
-            <div class="menu-item-row">
-                <div class="item-identity"><span class="item-title">ميني بان كيك بستاشيو</span><span
-                        class="premium-badge">Trending</span></div>
-                <div class="price-matrix"><span class="price-m-value">170</span><span class="price-l-value">280</span>
-                </div>
+            <div class="page-footer">
+                <span class="footer-brand">Almood Shop</span>
+                <span class="footer-page"></span>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">بان كيك مكس / زبدة وعسل</div>
-                <div class="price-matrix"><span class="price-m-value">200</span><span class="price-l-value">180</span>
-                </div>
-            </div>
-        </div>
-        <div class="halal-note">
-            • مخبوز طازج يومياً • يمكن التخصيص حسب الطلب
         </div>
     </div>
 
     <!-- Cinnabons -->
     <div class="story-slide" id="cinnabons">
-        <div class="slide-header">
-            <h2>سينابون</h2>
-            <span class="en-sub">Freshly Baked Cinnabons</span>
-            <span class="ar-tagline">طعم لا يُقاوم في كل لفة</span>
+        <div class="page-header-band">
+            <span class="band-en">Cinnabons</span>
+            <span class="band-ar">سينابون</span>
         </div>
-        <div class="product-image-frame">
-            <img src="https://i.pinimg.com/736x/dc/15/b4/dc15b428c4ecb05ad04732daeac13ab5.jpg"
-                alt="Freshly Baked Cinnabons">
-        </div>
-        <div class="dual-labels"><span>السعر</span></div>
-        <div class="menu-list-wrapper">
-            <div class="menu-item-row">
-                <div class="item-title">ميني  سينابون فروستينج</div>
-                <div class="price-matrix"><span class="price-l-value">50</span></div>
+        <div class="page-body">
+            <div class="col-labels">
+                <div></div>
+                <div class="col-labels-price"><span>EGP</span></div>
+                <div></div>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">ميني سينابون ( كيندر / بستاشيو / لوتس / نوتيلا)</div>
-                <div class="price-matrix"><span class="price-l-value">60</span></div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">سينابون فروستينج</div>
-                <div class="price-matrix"><span class="price-l-value">65</span></div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">سينابون (نوتيلا / لوتس / كيندر)</div>
-                <div class="price-matrix"><span class="price-l-value">85</span></div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-title">سينابون  بستاشيو</div>
-                <div class="price-matrix"><span class="price-l-value">90</span></div>
-            </div>
-            <div class="menu-item-row">
-                <div class="item-identity"><span class="item-title">سينابون بيكان كراميل</span><span
-                        class="premium-badge">Must Try</span></div>
-                <div class="price-matrix"><span class="price-l-value">95</span></div>
-            </div>
-            <div class="menu-item-row" style="border-right: 2px solid var(--accent-silver); padding-right: 8px;">
-                <div class="item-identity">
-                    <span class="item-title" style="color: var(--accent-silver); font-weight: 700;">مكس ميني سينابون</span>
-                    <span class="premium-badge" style="background-color: rgba(201,201,226,0.3);">Gold</span>
+            <div class="menu-list-wrapper">
+                <div class="menu-item-row">
+                    <div class="item-name-en">Mini Cinnabon Frosting</div>
+                    <div class="price-matrix"><span>50</span></div>
+                    <div class="item-name-ar">ميني سينابون فروستينج</div>
                 </div>
-                <div class="price-matrix"><span class="price-l-value" style="font-size: 17px;">220</span></div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Mini Cinnabon (Kinder/Pistachio/Lotus/Nutella)</div>
+                    <div class="price-matrix"><span>60</span></div>
+                    <div class="item-name-ar">ميني سينابون ( كيندر / بستاشيو / لوتس / نوتيلا)</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Cinnabon Frosting</div>
+                    <div class="price-matrix"><span>65</span></div>
+                    <div class="item-name-ar">سينابون فروستينج</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Cinnabon (Nutella/Lotus/Kinder)</div>
+                    <div class="price-matrix"><span>85</span></div>
+                    <div class="item-name-ar">سينابون (نوتيلا / لوتس / كيندر)</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Pistachio Cinnabon</div>
+                    <div class="price-matrix"><span>90</span></div>
+                    <div class="item-name-ar">سينابون بستاشيو</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Pecan Caramel Cinnabon</div>
+                    <div class="price-matrix"><span>95</span></div>
+                    <div class="item-identity">
+                        <span class="premium-badge">Must Try</span>
+                        <span class="item-name-ar">سينابون بيكان كراميل</span>
+                    </div>
+                </div>
+                <div class="menu-item-row" style="background: var(--badge-bg);">
+                    <div class="item-name-en" style="color: var(--navy); font-weight: 800;">Mini Cinnabon Mix</div>
+                    <div class="price-matrix"><span style="font-size: 17px;">220</span></div>
+                    <div class="item-identity">
+                        <span class="premium-badge" style="background: rgba(26,25,67,0.18);">Gold</span>
+                        <span class="item-name-ar" style="color: var(--navy);">مكس ميني سينابون</span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="halal-note">
-            • مخبوز طازج يومياً • يمكن التخصيص حسب الطلب
+            <div class="halal-note">
+                • مخبوز طازج يومياً • يمكن التخصيص حسب الطلب
+            </div>
+            <div class="page-footer">
+                <span class="footer-brand">Almood Shop</span>
+                <span class="footer-page"></span>
+            </div>
         </div>
     </div>
 
     <!-- Premium Pastries + Closing -->
     <div class="story-slide" id="pastries">
-        <div class="slide-header">
-            <h2>حلويات فاخرة</h2>
-            <span class="en-sub">Premium Pastry Selection</span>
-            <span class="ar-tagline">أرقى الحلويات المختارة</span>
+        <div class="page-header-band">
+            <span class="band-en">Premium Pastries</span>
+            <span class="band-ar">حلويات فاخرة</span>
         </div>
-        <div class="product-image-frame" style="height:140px;">
-            <img src="https://i.ytimg.com/vi/oTTPmiIg9pE/maxresdefault.jpg"
-                alt="Premium Pastry Selection">
-        </div>
-        <div class="dual-labels"><span>السعر</span></div>
-        <div class="menu-list-wrapper" style="margin-bottom: 14px;">
-            <div class="menu-item-row">
-                <div class="item-title">كوكيز</div>
-                <div class="price-matrix"><span class="price-l-value">60</span></div>
+        <div class="page-body">
+            <div class="col-labels">
+                <div></div>
+                <div class="col-labels-price"><span>EGP</span></div>
+                <div></div>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">تشيز كيك بلوبيري / لوتس</div>
-                <div class="price-matrix"><span class="price-l-value">85 / 95</span></div>
+            <div class="menu-list-wrapper" style="margin-bottom: 14px;">
+                <div class="menu-item-row">
+                    <div class="item-name-en">Cookies</div>
+                    <div class="price-matrix"><span>60</span></div>
+                    <div class="item-name-ar">كوكيز</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Blueberry/Lotus Cheesecake</div>
+                    <div class="price-matrix"><span>85 / 95</span></div>
+                    <div class="item-name-ar">تشيز كيك بلوبيري / لوتس</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Aish El Saraya</div>
+                    <div class="price-matrix"><span>120</span></div>
+                    <div class="item-name-ar">عيش السرايا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Nutella Kunafa / Ice Cream Kunafa</div>
+                    <div class="price-matrix"><span>160 / 130</span></div>
+                    <div class="item-name-ar">كنافة نوتيلا / كنافة ايس كريم</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Brownies / Molten Cake</div>
+                    <div class="price-matrix"><span>120</span></div>
+                    <div class="item-name-ar">براونيز / مولتن كيك</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">San Sebastián Cheesecake</div>
+                    <div class="price-matrix"><span>160</span></div>
+                    <div class="item-identity">
+                        <span class="premium-badge">Must Try</span>
+                        <span class="item-name-ar">سان سيباستيان تشيز كيك</span>
+                    </div>
+                </div>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">عيش السرايا</div>
-                <div class="price-matrix"><span class="price-l-value">120</span></div>
+            <div class="halal-note" style="margin-bottom: 14px;">
+                • جميع الحلويات محضّرة يومياً بمكونات طازجة
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">كنافة نوتيلا / كنافة ايس كريم</div>
-                <div class="price-matrix"><span class="price-l-value">160 / 130</span></div>
+            <div class="contact-block">
+                <div class="address-line">📍 MADINATY - CRAFT ZONE - B9</div>
+                <div class="insta-tag">
+                    <a href="https://www.instagram.com/almoodshop.egy/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <circle cx="12" cy="12" r="4" />
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                        </svg>
+                        @almoodshop.egy
+                    </a>
+                </div>
+                <div class="phone-tag">
+                    <a href="tel:+201271807777">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
+                            <path
+                                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-.54a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                        </svg>
+                        +20 127 180 7777
+                    </a>
+                </div>
             </div>
-            <div class="menu-item-row">
-                <div class="item-title">براونيز / مولتن كيك</div>
-                <div class="price-matrix"><span class="price-l-value">120</span></div>
+            <div class="page-footer">
+                <span class="footer-brand">Almood Shop</span>
+                <span class="footer-page"></span>
             </div>
-            <div class="menu-item-row">
-                <div class="item-identity"><span class="item-title">سان سيباستيان تشيز كيك</span><span
-                        class="premium-badge">Must Try</span></div>
-                <div class="price-matrix"><span class="price-l-value">160</span></div>
-            </div>
-        </div>
-        <div class="halal-note" style="margin-bottom: 14px;">
-            • جميع الحلويات محضّرة يومياً بمكونات طازجة
-        </div>
-        <div
-            style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; text-align: center; font-size: 13px; font-weight:700; font-family: 'Montserrat', sans-serif; color: var(--text-white);">
-            📍 MADINATY - CRAFT ZONE - B9
         </div>
     </div>
 
     <script>
-        const instaHTML = `
-      <a href="https://www.instagram.com/almoodshop.egy/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:6px;color:inherit;text-decoration:none;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-        </svg>
-        @almoodshop.egy
-      </a>
-    `;
-        const phoneHTML = `
-      <a href="tel:+201271807777" style="display:flex;align-items:center;gap:5px;color:inherit;text-decoration:none;">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-.54a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        +20 127 180 7777
-      </a>
-    `;
-
         const allSlides = document.querySelectorAll('.story-slide');
-        const totalPages = Array.from(allSlides).filter((slide, index) => index !== 0 && slide.id !== 'index').length;
+        const numberedSlides = Array.from(allSlides).filter((slide, index) => index !== 0 && slide.id !== 'index');
+        const totalPages = numberedSlides.length;
 
         let pageCounter = 0;
         const pageNumberById = {};
 
         allSlides.forEach((slide, index) => {
-            const tag = document.createElement('div');
-            tag.className = 'insta-tag';
-            tag.innerHTML = instaHTML;
-            slide.appendChild(tag);
-
-            const phoneTag = document.createElement('div');
-            phoneTag.className = 'phone-tag';
-            phoneTag.innerHTML = phoneHTML;
-            slide.appendChild(phoneTag);
-
-            // Skip cover slide — it already has the large logo
-            if (index === 0) return;
-
-            const logo = document.createElement('div');
-            logo.className = 'slide-logo';
-            logo.innerHTML = `<img src="almood-logo.jpg" alt="Almood Shop" />`;
-            slide.appendChild(logo);
-
-            // Index page itself has no page number
-            if (slide.id === 'index') return;
+            // Cover and index pages carry no page number
+            if (index === 0 || slide.id === 'index') return;
 
             pageCounter++;
             if (slide.id) pageNumberById[slide.id] = pageCounter;
 
-            const pageNumber = document.createElement('div');
-            pageNumber.className = 'page-number';
-            pageNumber.textContent = `${String(pageCounter).padStart(2, '0')} / ${String(totalPages).padStart(2, '0')}`;
-            slide.appendChild(pageNumber);
+            const footerPage = slide.querySelector('.footer-page');
+            if (footerPage) {
+                footerPage.textContent = `${String(pageCounter).padStart(2, '0')} / ${String(totalPages).padStart(2, '0')}`;
+            }
         });
 
         document.querySelectorAll('.index-item').forEach((item) => {
