@@ -65,6 +65,7 @@
             justify-content: space-between;
             align-items: baseline;
             gap: 10px;
+            scroll-margin-top: 20px;
         }
 
         .band-en {
@@ -416,6 +417,11 @@
         }
 
         /* Footer on every interior page */
+        /* Second band on a merged (two-section) page */
+        .page-header-band.merged {
+            margin-top: 14px;
+        }
+
         .page-footer {
             margin-top: auto;
             padding-top: 10px;
@@ -891,13 +897,13 @@
         </div>
     </div>
 
-    <!-- Frappuccinos -->
+    <!-- Frappuccinos + Sodas & Mojitos -->
     <div class="story-slide" id="frappuccinos">
         <div class="page-header-band">
             <span class="band-en">Frappuccinos</span>
             <span class="band-ar">فرابتشينو</span>
         </div>
-        <div class="page-body">
+        <div class="page-body" style="flex: 0 0 auto;">
             <div class="col-labels">
                 <div></div>
                 <div class="col-labels-price"><span>L</span><span>M</span></div>
@@ -936,6 +942,53 @@
                     <div class="item-name-en">Strawberry Frappuccino</div>
                     <div class="price-matrix"><span>120</span><span>105</span></div>
                     <div class="item-name-ar">فرابتشينو فراولة</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-header-band merged" id="sodas-mojitos">
+            <span class="band-en">Sodas &amp; Mojitos</span>
+            <span class="band-ar">الصودا والموخيتو</span>
+        </div>
+        <div class="page-body">
+            <div class="col-labels">
+                <div></div>
+                <div class="col-labels-price"><span>L</span><span>M</span></div>
+                <div></div>
+            </div>
+            <div class="menu-list-wrapper">
+                <div class="menu-item-row">
+                    <div class="item-name-en">Red Bull Mojito</div>
+                    <div class="price-matrix"><span>160</span><span>—</span></div>
+                    <div class="item-identity">
+                        <span class="premium-badge">Ultimate Vibe</span>
+                        <span class="item-name-ar">موخيتو ريد بول</span>
+                    </div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Classic Mojito</div>
+                    <div class="price-matrix"><span>100</span><span>—</span></div>
+                    <div class="item-name-ar">موخيتو كلاسيك</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Italian Soda</div>
+                    <div class="price-matrix"><span>90</span><span>—</span></div>
+                    <div class="item-name-ar">ايطاليان صودا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Red Bull</div>
+                    <div class="price-matrix"><span>—</span><span>90</span></div>
+                    <div class="item-name-ar">ريد بول</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Cola</div>
+                    <div class="price-matrix"><span>—</span><span>30</span></div>
+                    <div class="item-name-ar">كولا</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Water</div>
+                    <div class="price-matrix"><span>—</span><span>10</span></div>
+                    <div class="item-name-ar">مياه</div>
                 </div>
             </div>
             <div class="page-footer">
@@ -1005,60 +1058,6 @@
                         <span class="premium-badge">New Item</span>
                         <span class="item-name-ar">نوتيلا سينامون ميلك شيك</span>
                     </div>
-                </div>
-            </div>
-            <div class="page-footer">
-                <span class="footer-brand">Almood Shop</span>
-                <span class="footer-page"></span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sodas & Mojitos -->
-    <div class="story-slide" id="sodas-mojitos">
-        <div class="page-header-band">
-            <span class="band-en">Sodas &amp; Mojitos</span>
-            <span class="band-ar">الصودا والموخيتو</span>
-        </div>
-        <div class="page-body">
-            <div class="col-labels">
-                <div></div>
-                <div class="col-labels-price"><span>L</span><span>M</span></div>
-                <div></div>
-            </div>
-            <div class="menu-list-wrapper">
-                <div class="menu-item-row">
-                    <div class="item-name-en">Red Bull Mojito</div>
-                    <div class="price-matrix"><span>160</span><span>—</span></div>
-                    <div class="item-identity">
-                        <span class="premium-badge">Ultimate Vibe</span>
-                        <span class="item-name-ar">موخيتو ريد بول</span>
-                    </div>
-                </div>
-                <div class="menu-item-row">
-                    <div class="item-name-en">Classic Mojito</div>
-                    <div class="price-matrix"><span>100</span><span>—</span></div>
-                    <div class="item-name-ar">موخيتو كلاسيك</div>
-                </div>
-                <div class="menu-item-row">
-                    <div class="item-name-en">Italian Soda</div>
-                    <div class="price-matrix"><span>90</span><span>—</span></div>
-                    <div class="item-name-ar">ايطاليان صودا</div>
-                </div>
-                <div class="menu-item-row">
-                    <div class="item-name-en">Red Bull</div>
-                    <div class="price-matrix"><span>—</span><span>90</span></div>
-                    <div class="item-name-ar">ريد بول</div>
-                </div>
-                <div class="menu-item-row">
-                    <div class="item-name-en">Cola</div>
-                    <div class="price-matrix"><span>—</span><span>30</span></div>
-                    <div class="item-name-ar">كولا</div>
-                </div>
-                <div class="menu-item-row">
-                    <div class="item-name-en">Water</div>
-                    <div class="price-matrix"><span>—</span><span>10</span></div>
-                    <div class="item-name-ar">مياه</div>
                 </div>
             </div>
             <div class="page-footer">
@@ -1276,13 +1275,13 @@
         </div>
     </div>
 
-    <!-- Mini Pancakes -->
+    <!-- Mini Pancakes + Cinnabons -->
     <div class="story-slide" id="mini-pancakes">
         <div class="page-header-band">
             <span class="band-en">Mini Pancakes</span>
             <span class="band-ar">ميني بان كيك</span>
         </div>
-        <div class="page-body">
+        <div class="page-body" style="flex: 0 0 auto;">
             <div class="col-labels">
                 <div></div>
                 <div class="col-labels-price"><span>Large</span><span>Regular</span></div>
@@ -1316,16 +1315,9 @@
             <div class="halal-note">
                 • مخبوز طازج يومياً • يمكن التخصيص حسب الطلب
             </div>
-            <div class="page-footer">
-                <span class="footer-brand">Almood Shop</span>
-                <span class="footer-page"></span>
-            </div>
         </div>
-    </div>
 
-    <!-- Cinnabons -->
-    <div class="story-slide" id="cinnabons">
-        <div class="page-header-band">
+        <div class="page-header-band merged" id="cinnabons">
             <span class="band-en">Cinnabons</span>
             <span class="band-ar">سينابون</span>
         </div>
@@ -1496,6 +1488,12 @@
             if (footerPage) {
                 footerPage.textContent = `${String(pageCounter).padStart(2, '0')} / ${String(totalPages).padStart(2, '0')}`;
             }
+        });
+
+        // Second sections sharing a merged page carry the same page number as the page's first section
+        document.querySelectorAll('.page-header-band.merged[id]').forEach((band) => {
+            const sharedNumber = pageNumberById[band.closest('.story-slide').id];
+            if (sharedNumber) pageNumberById[band.id] = sharedNumber;
         });
 
         document.querySelectorAll('.index-item').forEach((item) => {
