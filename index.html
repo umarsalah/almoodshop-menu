@@ -56,6 +56,7 @@
             display: flex;
             flex-direction: column;
             scroll-margin-top: 20px;
+            flex-shrink: 0;
         }
 
         /* Bilingual color-block section header band */
@@ -220,14 +221,14 @@
 
         #menu-board {
             display: none;
-            grid-template-columns: repeat(auto-fit, minmax(1000px, 1050px));
+            flex-wrap: wrap;
             justify-content: center;
-            align-items: start;
+            align-items: flex-start;
             gap: 28px;
         }
 
         #menu-board.is-open {
-            display: grid;
+            display: flex;
         }
 
         .landing-ring {
@@ -513,6 +514,10 @@
                 background: #fff;
                 display: block;
                 padding: 0;
+            }
+
+            .story-slide {
+                zoom: 1 !important;
             }
 
             #landing-slide {
@@ -1559,6 +1564,30 @@
             document.getElementById('landing-slide').style.display = 'none';
             document.getElementById('menu-board').classList.add('is-open');
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            fitSlidesToViewport();
+        });
+
+        // Fixed-width pages (1050px / 414px) are zoomed down to fit narrow
+        // (mobile) viewports instead of overflowing or shrinking unreadably.
+        // `zoom` (unlike `transform`) resizes the element's own layout box,
+        // so no wrapper element is needed and print pagination is unaffected.
+        function fitSlidesToViewport() {
+            const sideGutter = 48; // matches body's 24px left/right padding
+            const available = document.body.clientWidth - sideGutter;
+
+            document.querySelectorAll('.story-slide').forEach((slide) => {
+                const nativeWidth = slide.classList.contains('landing-slide') ? 414 : 1050;
+                const scale = Math.min(1, available / nativeWidth);
+                slide.style.zoom = scale;
+            });
+        }
+
+        fitSlidesToViewport();
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(fitSlidesToViewport, 150);
         });
 
         const allSlides = document.querySelectorAll('.story-slide');
