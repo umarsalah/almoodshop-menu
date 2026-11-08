@@ -35,10 +35,12 @@
             background-color: var(--body-bg);
             font-family: 'Cairo', sans-serif;
             color: var(--ink);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 414px));
+            justify-content: center;
+            align-items: start;
+            gap: 28px;
+            padding: 40px 24px;
         }
 
         .story-slide {
@@ -48,7 +50,6 @@
             color: var(--ink);
             position: relative;
             overflow: hidden;
-            margin-bottom: 28px;
             border: 1px solid var(--rule);
             box-shadow: 0 4px 18px rgba(26, 25, 67, 0.08);
             display: flex;
