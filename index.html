@@ -310,8 +310,141 @@
             font-size: 58px;
             font-weight: 800;
             letter-spacing: -1px;
-            color: var(--navy);
             line-height: 1;
+            display: inline-block;
+            background-image: linear-gradient(100deg,
+                    var(--navy) 35%,
+                    #E3C572 50%,
+                    var(--navy) 65%);
+            background-size: 220% 100%;
+            background-position: 150% 0;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: var(--navy);
+            -webkit-text-fill-color: transparent;
+            animation: brand-intro 0.5s cubic-bezier(0.16, 1, 0.3, 1) both,
+                brand-shimmer 4.5s ease-in-out 0.5s infinite;
+        }
+
+        @keyframes brand-intro {
+            0% {
+                opacity: 0;
+                transform: translateY(16px) scale(0.94);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes brand-shimmer {
+            0% {
+                background-position: 150% 0;
+            }
+
+            18% {
+                background-position: -50% 0;
+            }
+
+            100% {
+                background-position: -50% 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .main-brand-logo {
+                animation: none;
+                background-image: none;
+                color: var(--navy);
+                -webkit-text-fill-color: var(--navy);
+            }
+        }
+
+        /* Landing page wordmark keeps moving continuously (vs. the cover
+           page's one-time reveal shimmer) for a livelier first impression. */
+        .landing-brand-logo {
+            animation: brand-intro 0.9s cubic-bezier(0.16, 1, 0.3, 1) both,
+                brand-shimmer-loop 3s linear infinite,
+                brand-float 3.6s ease-in-out 0.9s infinite;
+        }
+
+        @keyframes brand-shimmer-loop {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -100% 0;
+            }
+        }
+
+        @keyframes brand-float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .landing-brand-logo {
+                animation: none;
+            }
+        }
+
+        /* Landing page logo: a slow spinning gradient ring behind the mark,
+           bobbing gently in sync with the wordmark below it. */
+        .landing-logo-ring {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: brand-float 3.6s ease-in-out infinite;
+        }
+
+        .landing-logo-ring::before {
+            content: "";
+            position: absolute;
+            inset: -7px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg,
+                    var(--navy),
+                    #E3C572 25%,
+                    var(--navy) 50%,
+                    var(--navy) 75%,
+                    #E3C572 100%);
+            animation: logo-ring-spin 7s linear infinite;
+        }
+
+        .landing-logo-img {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--page-bg);
+        }
+
+        @keyframes logo-ring-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .landing-logo-ring {
+                animation: none;
+            }
+
+            .landing-logo-ring::before {
+                animation: none;
+            }
         }
 
         .shop-subtitle {
@@ -543,6 +676,63 @@
                 page-break-after: auto;
             }
         }
+
+        /* Mobile layout — below this width, slides are no longer shrunk to
+           fit (see fitSlidesToViewport's MOBILE_BREAKPOINT, which must match). */
+        @media (max-width: 860px) {
+            .story-slide:not(.landing-slide) {
+                width: 100%;
+                min-height: 0;
+            }
+
+            .landing-slide {
+                width: 100%;
+                max-width: 414px;
+                min-height: 0;
+            }
+
+            .page-body {
+                padding: 14px 16px 12px;
+            }
+
+            .col-labels,
+            .menu-item-row {
+                grid-template-columns: 1fr 96px 1fr;
+            }
+
+            .band-en,
+            .band-ar {
+                font-size: 18px;
+            }
+
+            .col-labels-price {
+                font-size: 11.5px;
+            }
+
+            .item-name-en {
+                font-size: 12px;
+            }
+
+            .item-name-ar {
+                font-size: 16px;
+            }
+
+            .price-matrix {
+                font-size: 15px;
+            }
+
+            .index-item-ar {
+                font-size: 16px;
+            }
+
+            .index-item-en {
+                font-size: 11px;
+            }
+
+            .index-item-page {
+                font-size: 17px;
+            }
+        }
     </style>
 </head>
 
@@ -558,9 +748,10 @@
             <circle cx="150" cy="150" r="148" stroke="var(--band-tint)" stroke-width="22" />
         </svg>
         <div class="landing-content">
-            <img src="almood-logo.jpg" alt="Almood Shop Logo"
-                style="width:110px;height:110px;border-radius:50%;object-fit:cover;border:2px solid var(--navy);" />
-            <div class="main-brand-logo">ALMOOD</div>
+            <div class="landing-logo-ring">
+                <img src="almood-logo.jpg" alt="Almood Shop Logo" class="landing-logo-img" />
+            </div>
+            <div class="main-brand-logo landing-brand-logo">ALMOOD</div>
             <div class="shop-subtitle">SHOP</div>
 
             <button type="button" class="menu-pill-btn" id="open-menu-btn">Menu</button>
@@ -1289,14 +1480,29 @@
                     <div class="item-name-ar">كريب مكس / كريب سوشي</div>
                 </div>
                 <div class="menu-item-row">
-                    <div class="item-name-en">Kinder Crepe / Ice Cream Crepe</div>
-                    <div class="price-matrix"><span>200 / 220</span></div>
-                    <div class="item-name-ar">كريب كيندر / كريب ايس كريم</div>
+                    <div class="item-name-en">Kinder Crepe </div>
+                    <div class="price-matrix"><span>200</span></div>
+                    <div class="item-name-ar">كريب كيندر</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Fettuccine Crepe</div>
+                    <div class="price-matrix"><span>220</span></div>
+                    <div class="item-name-ar">كريب فيتوتشيني</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Ice Cream Crepe</div>
+                    <div class="price-matrix"><span>280</span></div>
+                    <div class="item-name-ar">كريب ايسكريم</div>
                 </div>
                 <div class="menu-item-row">
                     <div class="item-name-en">Fortica Crepe (Savory)</div>
-                    <div class="price-matrix"><span>150</span></div>
-                    <div class="item-name-ar">كريب الفورتيكا (مالح)</div>
+                    <div class="price-matrix"><span>170</span></div>
+                    <div class="item-name-ar">كريب الفورتيكا (مكس جبن)</div>
+                </div>
+                <div class="menu-item-row">
+                    <div class="item-name-en">Sausage Crepe</div>
+                    <div class="price-matrix"><span>220</span></div>
+                    <div class="item-name-ar">كريب نقانق</div>
                 </div>
             </div>
             <div class="premium-footer-box">
@@ -1567,11 +1773,24 @@
             fitSlidesToViewport();
         });
 
-        // Fixed-width pages (1050px / 414px) are zoomed down to fit narrow
-        // (mobile) viewports instead of overflowing or shrinking unreadably.
-        // `zoom` (unlike `transform`) resizes the element's own layout box,
-        // so no wrapper element is needed and print pagination is unaffected.
+        // Below MOBILE_BREAKPOINT, the CSS mobile layout (see the matching
+        // @media (max-width) rule) takes over with fluid-width, readable-size
+        // slides, so no shrinking is applied here.
+        //
+        // Above it, fixed-width pages (1050px / 414px) are zoomed down to fit
+        // narrower windows instead of overflowing. `zoom` (unlike `transform`)
+        // resizes the element's own layout box, so no wrapper element is
+        // needed and print pagination is unaffected.
+        const MOBILE_BREAKPOINT = 860;
+
         function fitSlidesToViewport() {
+            if (window.innerWidth <= MOBILE_BREAKPOINT) {
+                document.querySelectorAll('.story-slide').forEach((slide) => {
+                    slide.style.zoom = '';
+                });
+                return;
+            }
+
             const sideGutter = 48; // matches body's 24px left/right padding
             const available = document.body.clientWidth - sideGutter;
 
