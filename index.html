@@ -227,6 +227,8 @@
             justify-content: center;
             align-items: flex-start;
             gap: 28px;
+            max-width: 1050px;
+            margin: 0 auto;
         }
 
         #menu-board.is-open {
@@ -700,6 +702,11 @@
             .col-labels,
             .menu-item-row {
                 grid-template-columns: minmax(0, 1fr) 96px minmax(0, 1fr);
+            }
+
+            .item-identity {
+                flex-wrap: wrap;
+                row-gap: 2px;
             }
 
             .band-en,
