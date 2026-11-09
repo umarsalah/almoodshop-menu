@@ -111,7 +111,7 @@
         /* Column header labels above price values */
         .col-labels {
             display: grid;
-            grid-template-columns: 1fr 86px 1fr;
+            grid-template-columns: minmax(0, 1fr) 86px minmax(0, 1fr);
             margin-bottom: 6px;
         }
 
@@ -139,7 +139,7 @@
 
         .menu-item-row {
             display: grid;
-            grid-template-columns: 1fr 86px 1fr;
+            grid-template-columns: minmax(0, 1fr) 86px minmax(0, 1fr);
             align-items: center;
             column-gap: 8px;
             padding: 6px 6px;
@@ -156,6 +156,7 @@
             color: var(--muted);
             text-align: left;
             line-height: 1.15;
+            overflow-wrap: anywhere;
         }
 
         .item-identity {
@@ -170,6 +171,7 @@
             font-weight: 700;
             text-align: right;
             line-height: 1.2;
+            overflow-wrap: anywhere;
         }
 
         .premium-badge {
@@ -697,7 +699,7 @@
 
             .col-labels,
             .menu-item-row {
-                grid-template-columns: 1fr 96px 1fr;
+                grid-template-columns: minmax(0, 1fr) 96px minmax(0, 1fr);
             }
 
             .band-en,
@@ -805,7 +807,7 @@
     <div class="story-slide">
         <div class="cover-wrapper">
             <img src="almood-logo.jpg" alt="Almood Shop Logo"
-                style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid var(--navy);margin-bottom:18px;" />
+                style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid #E3C572;margin-bottom:18px;" />
             <div class="main-brand-logo">ALMOOD</div>
             <div class="shop-subtitle">SHOP</div>
             <div class="script-menu-title">Menu</div>
