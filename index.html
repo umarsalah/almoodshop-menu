@@ -41,7 +41,7 @@
         }
 
         .story-slide {
-            width: 1050px;
+            width: 850px;
             min-height: 595px;
             background-color: var(--page-bg);
             background-image: var(--pattern-bg);
@@ -99,12 +99,12 @@
         }
 
         .page-body {
-            padding: 16px 22px 14px;
+            padding: 10px 12px 8px;
             display: flex;
             flex-direction: column;
             flex: 1;
             width: 100%;
-            max-width: 850px;
+            max-width: 750px;
             margin: 0 auto;
         }
 
@@ -227,7 +227,7 @@
             justify-content: center;
             align-items: flex-start;
             gap: 28px;
-            max-width: 1050px;
+            max-width: 850px;
             margin: 0 auto;
         }
 
@@ -1786,7 +1786,7 @@
         // @media (max-width) rule) takes over with fluid-width, readable-size
         // slides, so no shrinking is applied here.
         //
-        // Above it, fixed-width pages (1050px / 414px) are zoomed down to fit
+        // Above it, fixed-width pages (850px / 414px) are zoomed down to fit
         // narrower windows instead of overflowing. `zoom` (unlike `transform`)
         // resizes the element's own layout box, so no wrapper element is
         // needed and print pagination is unaffected.
@@ -1804,7 +1804,7 @@
             const available = document.body.clientWidth - sideGutter;
 
             document.querySelectorAll('.story-slide').forEach((slide) => {
-                const nativeWidth = slide.classList.contains('landing-slide') ? 414 : 1050;
+                const nativeWidth = slide.classList.contains('landing-slide') ? 414 : 850;
                 const scale = Math.min(1, available / nativeWidth);
                 slide.style.zoom = scale;
             });
